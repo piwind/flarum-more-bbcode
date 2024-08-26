@@ -1,6 +1,6 @@
 {
-    "name": "imeepo/flarum-more-bbcode",
-    "description": "Adds more BBCode",
+    "name": "xypp/flarum-more-bbcode",
+    "description": "Adds more BBCode. Remaster from imeepo/flarum-more-bbcode",
     "keywords": [
         "flarum",
         "flarum extension"
@@ -12,13 +12,18 @@
     },
     "authors": [
         {
+            "name": "小鱼飘飘",
+            "email": "z@xypp.cc",
+            "role": "Developer"
+        },
+        {
             "name": "imeepo",
             "email": "me@imeepo.com",
             "role": "Developer"
         }
     ],
     "support": {
-        "source": "https://github.com/imeepo/flarum-more-bbcode"
+        "source": "https://github.com/zxy19/flarum-more-bbcode"
     },
     "autoload": {
         "psr-4": {
@@ -32,7 +37,7 @@
             "icon": {
                 "name": "fas fa-code",
                 "color": "#fff",
-                "backgroundColor": "#D3241C"
+                "backgroundColor": "#c2185b"
             }
         },
         "flarum-cli": {
