@@ -1,6 +1,6 @@
 # Imeepo/flarum-more-bbcode
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/xypp/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode) [![Total Downloads](https://img.shields.io/packagist/dt/imeepo/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/xypp/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode) [![Total Downloads](https://img.shields.io/packagist/dt/xypp/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode)
 
 一个 [Flarum](http://flarum.org) 拓展. 添加了一些常用的 BBCode，如登录可见、回复可见、网盘样式等。
 
