@@ -25,13 +25,13 @@ class Configure
         $config->BBCodes->addCustom(
             '[REPLY]{TEXT}[/REPLY]',
             '<div class="reply2see"><div class="reply2see_title">' .
-            $this->translator->trans('imeepo-more-bbcode.forum.hidden_content_reply')
+            $this->translator->trans('xypp-more-bbcode.forum.hidden_content_reply')
             . '</div><xsl:apply-templates /></div>'
         );
         $config->BBCodes->addCustom(
             '[LOGIN]{TEXT}[/LOGIN]',
             '<div class="login2see"><div class="login2see_title">' .
-            $this->translator->trans('imeepo-more-bbcode.forum.hidden_content_login') .
+            $this->translator->trans('xypp-more-bbcode.forum.hidden_content_login') .
             '</div><xsl:apply-templates /></div>'
         );
         $config->BBCodes->addCustom(
@@ -42,7 +42,7 @@ class Configure
         $config->tags->add("login2see_guest")->template =
             '<div class="login2see"><div class="login2see_alert">' .
             $this->translator->trans(
-                'imeepo-more-bbcode.forum.login_to_see',
+                'xypp-more-bbcode.forum.login_to_see',
                 array(
                     '{login}' => '<a class="login2see_login">' . $this->translator->trans('core.forum.header.log_in_link') . '</a>',
                 )
@@ -51,7 +51,7 @@ class Configure
         $config->tags->add("reply2see_alert")->template =
             '<div class="reply2see"><div class="reply2see_alert">' .
             $this->translator->trans(
-                'imeepo-more-bbcode.forum.reply_to_see',
+                'xypp-more-bbcode.forum.reply_to_see',
                 array(
                     '{reply}' => '<a class="reply2see_reply">' . $this->translator->trans('core.forum.discussion_controls.reply_button') . '</a>',
                 )

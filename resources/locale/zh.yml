@@ -1,4 +1,4 @@
-imeepo-more-bbcode:
+xypp-more-bbcode:
   admin:
     permissions:
       bypass_reply_label: 忽略回复可见

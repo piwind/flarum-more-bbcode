@@ -7,7 +7,7 @@ import LogInModal from "flarum/forum/components/LogInModal";
 import TextEditor from "flarum/common/components/TextEditor";
 import TextEditorButton from "flarum/common/components/TextEditorButton";
 
-app.initializers.add("imeepo/more-bbcode", () => {
+app.initializers.add("xypp/more-bbcode", () => {
   extend(TextEditor.prototype, "toolbarItems", function (items) {
     items.add(
       "reply-to-see",
@@ -19,7 +19,7 @@ app.initializers.add("imeepo/more-bbcode", () => {
         }}
         icon="fa fa-comment-medical"
       >
-        {app.translator.trans("imeepo-more-bbcode.forum.button_tooltip_reply")}
+        {app.translator.trans("xypp-more-bbcode.forum.button_tooltip_reply")}
       </TextEditorButton>
     );
     items.add(
@@ -32,20 +32,20 @@ app.initializers.add("imeepo/more-bbcode", () => {
         }}
         icon="fas fa-sign-in-alt"
       >
-        {app.translator.trans("imeepo-more-bbcode.forum.button_tooltip_login")}
+        {app.translator.trans("xypp-more-bbcode.forum.button_tooltip_login")}
       </TextEditorButton>
     );
     items.add(
       "imeepo-cloud",
       <TextEditorButton
         onclick={() => {
-          this.attrs.composer.editor.insertAtCursor('[cloud type=other title=' + app.translator.trans("imeepo-more-bbcode.forum.cloud_title") +' url=' + app.translator.trans("imeepo-more-bbcode.forum.cloud_url") +']' + app.translator.trans("imeepo-more-bbcode.forum.cloud_password") +'[/cloud]');
+          this.attrs.composer.editor.insertAtCursor('[cloud type=other title=' + app.translator.trans("xypp-more-bbcode.forum.cloud_title") +' url=' + app.translator.trans("xypp-more-bbcode.forum.cloud_url") +']' + app.translator.trans("xypp-more-bbcode.forum.cloud_password") +'[/cloud]');
           const range = this.attrs.composer.editor.getSelectionRange();
           this.attrs.composer.editor.moveCursorTo(range[1] - 8);
         }}
         icon="fas fa-download"
       >
-        {app.translator.trans("imeepo-more-bbcode.forum.button_tooltip_cloud")}
+        {app.translator.trans("xypp-more-bbcode.forum.button_tooltip_cloud")}
       </TextEditorButton>
     );
   });
