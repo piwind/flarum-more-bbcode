@@ -17,7 +17,7 @@
 使用 composer 进行安装:
 
 ```sh
-composer require imeepo/flarum-more-bbcode:"*"
+composer require xypp/flarum-more-bbcode:"*"
 ```
 
 ## 如何使用
