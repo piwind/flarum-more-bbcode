@@ -24,7 +24,7 @@ use Symfony\Component\Config\Util\XmlUtils;
 
 class Rendering
 {
-    public function __invoke(Renderer $renderer, mixed $context, string $xml, ?ServerRequestInterface $request)
+    public function __invoke(Renderer $renderer, $context, string $xml, ?ServerRequestInterface $request)
     {
         $post = $context;
         if (!($post instanceof CommentPost)) {
