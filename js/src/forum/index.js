@@ -1,11 +1,9 @@
-import { extend } from "flarum/common/extend";
-import app from "flarum/common/app";
-import CommentPost from "flarum/forum/components/CommentPost";
-import DiscussionPage from "flarum/forum/components/DiscussionPage";
-import DiscussionControls from "flarum/forum/utils/DiscussionControls";
-import LogInModal from "flarum/forum/components/LogInModal";
-import TextEditor from "flarum/common/components/TextEditor";
-import TextEditorButton from "flarum/common/components/TextEditorButton";
+/*
+ * This file is part of MathRen.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 app.initializers.add("xypp/more-bbcode", () => {
   extend(TextEditor.prototype, "toolbarItems", function (items) {
@@ -49,25 +47,15 @@ app.initializers.add("xypp/more-bbcode", () => {
       </TextEditorButton>
     );
   });
+import app from 'flarum/common/app';
+import addTextEditorButton from './addTextEditorButton';
 
-  extend(CommentPost.prototype, "content", function () {
-    if (app.session.user && app.current.matches(DiscussionPage)) {
-      $(".reply2see_reply")
-        .off("click")
-        .on("click", () =>
-          DiscussionControls.replyAction.call(
-            app.current.get("discussion"),
-            true,
-            false
-          )
-        );
-    } else {
-      $(".reply2see_reply")
-        .off("click")
-        .on("click", () => app.modal.show(LogInModal));
-      $(".login2see_login")
-        .off("click")
-        .on("click", () => app.modal.show(LogInModal));
-    }
-  });
-});
+app.initializers.add(
+  'litalino-more-bbcode',
+  () => {
+    // Add text editor buttons.
+    addTextEditorButton();
+     
+  },
+  -500 // since we're overriding things...
+);

@@ -1,4 +1,4 @@
-# Imeepo/flarum-more-bbcode
+# Litalino/flarum-more-bbcode
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/xypp/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode) [![Total Downloads](https://img.shields.io/packagist/dt/xypp/flarum-more-bbcode.svg)](https://packagist.org/packages/xypp/flarum-more-bbcode)
 
@@ -12,7 +12,7 @@
 
 原项目请访问 [GitHub](https://github.com/imeepo/flarum-more-bbcode)
 
-## 安装
+PLugin Developer: imeepo/flarum-more-bbcode
 
 使用 composer 进行安装:
 
@@ -20,15 +20,22 @@
 composer require xypp/flarum-more-bbcode:"*"
 ```
 
-## 如何使用
+## How to use
+![1 3 0-n](https://github.com/Litalino/flarum-more-bbcode/assets/99712477/122046d1-362f-41a6-815a-2279cd703eec)
+
+
+### Login/reply visible
+When creating/editing a post, you can simply use [reply]BBCode to make it hidden from other users. Only the user who replied can see the hidden content.
+
+![bbcodemore](https://github.com/Litalino/flarum-more-bbcode/assets/99712477/00c5a59a-4f7b-4d45-9c56-ff03b2746df4)
 
 ### 登录/回复可见
 
 当创建/编辑一篇文章时，你可以简单地使用[reply]BBCode 使它对其他用户隐藏，只有回复的用户才可以看到隐藏内容。
 
 ```bbcode
-[login]这里的内容登录可见[/login]
-[reply]这里的内容回复可见[/reply]
+[login]The content here is visible after login[/login]
+[reply]The content of the reply here can be seen[/reply]
 ```
 
 ### 网盘样式
@@ -54,7 +61,7 @@ composer require xypp/flarum-more-bbcode:"*"
 
 按理来说全部解决了，这里应该等着填新问题了（）
 
-## 更新
+## Renew
 
 ```sh
 composer update xypp/flarum-more-bbcode:"*"
@@ -85,7 +92,7 @@ php flarum cache:clear
 - 修复帖子作者在编辑的时候，网盘下载地址会点击不了（[zxy19 修复](https://github.com/imeepo/flarum-more-bbcode/commit/c1e4cfcde7c1de0314be5656306fe9c7c81b9e2b)）
 - 新增夸克网盘
 
-## 链接
+## Link
 
 - [Packagist](https://packagist.org/packages/imeepo/flarum-more-bbcode)
 - [GitHub](https://github.com/imeepo/flarum-more-bbcode)

@@ -25,10 +25,17 @@
     "support": {
         "source": "https://github.com/zxy19/flarum-more-bbcode"
     },
-    "autoload": {
-        "psr-4": {
-            "Imeepo\\MoreBBCode\\": "src/"
-        }
+    "flarum-extension": {
+      "title": "BBCode More New",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-code",
+        "color": "#fff",
+        "backgroundColor": "#D3241C"
+      },
+      "optional-dependencies": [
+        "flarum/likes"
+      ]
     },
     "extra": {
         "flarum-extension": {
