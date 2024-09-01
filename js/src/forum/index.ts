@@ -71,7 +71,7 @@ app.initializers.add('xypp/more-bbcode', () => {
       },
       icon: showIf(showMoreBBcodeButtons, "fa fa-minus", "fa fa-plus")
     }, app.translator.trans("xypp-more-bbcode.forum.name")));
-    if (showMoreBBcodeButtons)
+    if (showMoreBBcodeButtons && (this.attrs as any)?.composer?.editor?.el)
       items.add("xypp-more-bbcode-buttons", buttonBar.component({
         tagCollect: tags,
         className: "main-entry",
