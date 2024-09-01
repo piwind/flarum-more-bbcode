@@ -11,7 +11,7 @@
 原项目请访问 [imeepo版](https://github.com/imeepo/flarum-more-bbcode)
 [Litalino版](https://github.com/Litalino/flarum-more-bbcode)
 
-如果你需要使用imeepo版本，请使用^1.0版本选择器
+如果你需要使用imeepo版本，请使用"dev-v1"版本
 
 ## 改进
 
