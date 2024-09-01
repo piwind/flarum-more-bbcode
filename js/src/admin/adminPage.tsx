@@ -5,7 +5,7 @@ import LoadingIndicator from "flarum/common/components/LoadingIndicator";
 import Checkbox from "flarum/common/components/Checkbox";
 import Stream from 'flarum/common/utils/Stream';
 import Alert from "flarum/common/components/Alert";
-const FUNCTIONS = new Set(["cloud", "detail", "tabs", "size", "color", "audio", "download", "clip", "gdoc", "litedown", "table", "spoiler", "bold", "italic", "underline", "strike_through", "url", "image", "email", "code", "quote", "list-ul", "list-ol", "color", "size", "align-left", "align-right", "align-center", "align", "align-center", "align-left", "align-right", "justify", "background", "subscript", "superscript", "strike-through", "underline", "horizontal-line", "acronym", "iframe", "padding-left", "padding-right", "image-right", "image-center", "image-right", "dropcap", "indent", "progress", "alert", "reply", "login", "login", "like"]);
+const FUNCTIONS = new Set(["cloud", "detail", "tabs", "size", "color", "audio", "download", "clip", "gdoc", "litedown", "table", "spoiler", "bold", "italic", "underline", "strike_through", "url", "image", "imagebb", "email", "code", "quote", "list-ul", "list-ol", "color", "size", "align-left", "align-right", "align-center", "align", "align-center", "align-left", "align-right", "justify", "background", "subscript", "superscript", "strike-through", "underline", "horizontal-line", "acronym", "iframe", "padding-left", "padding-right", "image-right", "image-center", "image-right", "dropcap", "indent", "progress", "alert", "reply", "login", "login", "like"]);
 
 function _trans(key: string, params?: any): string {
     const dat = app.translator.trans("xypp-more-bbcode.admin." + key, params);

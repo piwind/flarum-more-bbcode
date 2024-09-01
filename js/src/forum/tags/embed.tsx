@@ -2,7 +2,7 @@ import app from "flarum/forum/app";
 import TagCollector, { StyleArgs } from "../helper/tagCollector";
 import { prioritySerial } from "../utils/nodeUtil";
 import cloudPreviewModal from "../components/cloudPreviewModal";
-import { bbcode } from "../utils/styleUtil";
+import { bbcode, prefix } from "../utils/styleUtil";
 import common from "../utils/commonReplace";
 
 export default function addEmbedTags(tags: TagCollector, priority: () => number) {
@@ -21,19 +21,19 @@ export default function addEmbedTags(tags: TagCollector, priority: () => number)
             tags.add(priority(), "down",
                 "fas fa-download",
                 "xypp-more-bbcode.forum.embed.down",
-                bbcode(`[down link="${common("url")}" size="${common("size")}" name="${common("file")}"]`)
+                prefix(`[down link="${common("url")}" size="${common("size")}" name="${common("file")}"]`)
             );
             //Audio
             tags.add(priority(), "audio",
                 "fas fa-file-audio",
                 "xypp-more-bbcode.forum.embed.audio",
-                bbcode(`[audio mp3="${common("url")}"]`)
+                prefix(`[audio mp3="${common("url")}"]`)
             );
             //Clip
             tags.add(priority(), "clip",
                 "fas fa-file-video",
                 "xypp-more-bbcode.forum.embed.clip",
-                bbcode(`[clip mp4="${common("url")}"]`)
+                prefix(`[clip mp4="${common("url")}"]`)
             );
 
 

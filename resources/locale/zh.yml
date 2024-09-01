@@ -47,6 +47,7 @@ xypp-more-bbcode:
       title: 排版
       link: 链接
       image: 图像
+      imagebb: 图像(BBCode)
       code: 代码
       quote: 引用
       spoiler: 黑幕

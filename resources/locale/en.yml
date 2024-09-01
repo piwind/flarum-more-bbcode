@@ -47,6 +47,7 @@ xypp-more-bbcode:
       title: Typography
       link: Link
       image: Image
+      imagebb: Image(BBCode)
       code: Code
       quote: Quote
       spoiler: Spoiler

@@ -52,6 +52,14 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
                     replaceNext: 'https://',
                     scanFor: 'https?://'
                 }));
+            //Image
+            tags.add(priority(), "imagebb",
+                () => <div className="stackIcon">
+                    <i className="fas fa-image main" />
+                    <i className="fas fa-code rb-corner" />
+                </div>,
+                "xypp-more-bbcode.forum.typography.imagebb",
+                prefix(`[IMG src="${common("url")}" title="${common("title")}" alt="${common("simple")}" height="auto" width="auto"]`));
             //Quote
             tags.add(priority(), "quote",
                 "fas fa-quote-right",

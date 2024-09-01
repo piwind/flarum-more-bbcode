@@ -37,7 +37,7 @@ class RepositoryBBCode
             $config->BBCodes->addFromRepository('S');
         if ($this->functions->isEnable("url"))
             $config->BBCodes->addFromRepository('URL');
-        if ($this->functions->isEnable("image"))
+        if ($this->functions->isEnable("imagebb"))
             $config->BBCodes->addFromRepository('IMG');
         if ($this->functions->isEnable("email"))
             $config->BBCodes->addFromRepository('EMAIL');
