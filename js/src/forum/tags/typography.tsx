@@ -256,7 +256,7 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
             //Acronym
             tags.add(priority(), "acronym",
                 "fas fa-question-circle",
-                "xypp-more-bbcode.forum.typography.acronym",
+                "xypp-more-bbcode.forum.sign.acronym",
                 bbcode(`[acronym title=\"${common("title")}\"] ${common("describe")}`));
         }
     )
