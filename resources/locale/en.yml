@@ -1,6 +1,9 @@
 xypp-more-bbcode:
   admin:
     settings:
+      tip: |
+        Notice: Make sure to run cache:clear after any change with function/cloud settings. They will NEVER be save to the formatter until you clear cache to let flarum regenerate the render file.
+        CHECK YOUR WEBSITE AFTER ANY SETTINGS
       misc:
         title: Misc
         replace_md:
@@ -179,3 +182,10 @@ xypp-more-bbcode:
         defaults: Content Here
         version: " | Version: "
         password: " | Password: "
+  
+    auto-close:
+      title: Auto close the toolbar after click
+      all: All device
+      tablet: Tablet and Phone
+      phone: Phone
+      none: None

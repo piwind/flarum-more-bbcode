@@ -4,6 +4,7 @@ import Button from "flarum/common/components/Button";
 import LoadingIndicator from "flarum/common/components/LoadingIndicator";
 import Checkbox from "flarum/common/components/Checkbox";
 import Stream from 'flarum/common/utils/Stream';
+import Alert from "flarum/common/components/Alert";
 const FUNCTIONS = new Set(["cloud", "detail", "tabs", "size", "color", "audio", "download", "clip", "gdoc", "litedown", "table", "spoiler", "bold", "italic", "underline", "strike_through", "url", "image", "email", "code", "quote", "list-ul", "list-ol", "color", "size", "align-left", "align-right", "align-center", "align", "align-center", "align-left", "align-right", "justify", "background", "subscript", "superscript", "strike-through", "underline", "horizontal-line", "acronym", "iframe", "padding-left", "padding-right", "image-right", "image-center", "image-right", "dropcap", "indent", "progress", "alert", "reply", "login", "login", "like"]);
 
 function _trans(key: string, params?: any): string {
@@ -35,6 +36,9 @@ export default class adminPage extends ExtensionPage {
     }
     content(vnode: any) {
         return <div className="xypp-bbcode-more-adminPage-container container">
+            <Alert dismissible={false} type="warning">
+                {_trans("settings.tip")}
+            </Alert>
             <h2>{_trans("settings.misc.title")}</h2>
             {
                 this.buildSettingComponent({

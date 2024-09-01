@@ -36,4 +36,6 @@ return [
         ->serializeToForum("xypp-more-bbcode-collect_all", "xypp-more-bbcode.collect_all"),
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(ForumAttributes::class),
+    (new Extend\User)
+        ->registerPreference("xypp-bbcode-more-auto-close", null, "phone")
 ];

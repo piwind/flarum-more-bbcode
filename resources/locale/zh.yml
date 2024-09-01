@@ -1,6 +1,9 @@
 xypp-more-bbcode:
   admin:
     settings:
+      tip: |
+        注意: 请确保在更改了功能/云盘下载框设置后运行过cache:clear。你的设置在你清除缓存来通知flarum重新生成render文件之前【不会】生效！
+        【更改任何设置后，你都应该检查你的网站】
       misc:
         title: 杂项
         replace_md:
@@ -179,3 +182,10 @@ xypp-more-bbcode:
         defaults: 这里填写内容
         version: " | 版本: "
         password: " | 提取码: "
+
+    auto-close:
+      title: 点击按钮后自动关闭浮窗
+      all: 所有设备
+      tablet: 平板和手机
+      phone: 手机
+      none: 无
