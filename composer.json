@@ -1,6 +1,6 @@
 {
     "name": "xypp/flarum-more-bbcode",
-    "description": "Adds more BBCode. Remaster from imeepo/flarum-more-bbcode",
+    "description": "Adds more BBCode. Remaster from imeepo/flarum-more-bbcode and litalino/flarum-more-bbcode",
     "keywords": [
         "flarum",
         "flarum extension"
@@ -14,6 +14,11 @@
         {
             "name": "小鱼飘飘",
             "email": "z@xypp.cc",
+            "role": "Developer"
+        },
+        {
+            "name": "litalino",
+            "email": "info@khatvongsong.vn",
             "role": "Developer"
         },
         {
