@@ -26,16 +26,21 @@
         "source": "https://github.com/zxy19/flarum-more-bbcode"
     },
     "flarum-extension": {
-      "title": "BBCode More New",
-      "category": "feature",
-      "icon": {
-        "name": "fas fa-code",
-        "color": "#fff",
-        "backgroundColor": "#D3241C"
-      },
-      "optional-dependencies": [
-        "flarum/likes"
-      ]
+        "title": "BBCode More New",
+        "category": "feature",
+        "icon": {
+            "name": "fas fa-code",
+            "color": "#fff",
+            "backgroundColor": "#D3241C"
+        },
+        "optional-dependencies": [
+            "flarum/likes"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Xypp\\MoreBBCode\\": "src/"
+        }
     },
     "extra": {
         "flarum-extension": {

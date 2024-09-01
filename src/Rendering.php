@@ -1,6 +1,6 @@
 <?php
 
-namespace Imeepo\MoreBBCode;
+namespace Xypp\MoreBBCode;
 
 /*
  * This file is part of imeepo/flarum-more-bbcode.
@@ -16,6 +16,7 @@ use DOMElement;
 use Flarum\Discussion\Discussion;
 use Flarum\Http\RequestUtil;
 use Flarum\Post\CommentPost;
+use Flarum\Post\Post;
 use Flarum\User\Guest;
 use Flarum\User\User;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,6 +38,7 @@ class Rendering
             $actor = new Guest();
         $this->login2seeProcess($actor, $document);
         $this->reply2seeProcess($actor, $document, $post->discussion);
+        $this->like2seeProcess($actor, $document, $post);
         $xml = $document->saveXML();
         $xml = preg_replace("/<\?xml[^>]*>/", "", $xml);
         return $xml;
@@ -73,6 +75,29 @@ class Rendering
          */
         foreach ($tags->getIterator() as $tag) {
             $tag->after($document->createElement("REPLY2SEE_ALERT"));
+            $tag->remove();
+        }
+    }
+
+    protected function like2seeProcess(User $actor, DOMDocument $document, Post $post)
+    {
+        if ($actor->hasPermission('post.bypassLikeRequirement')) {
+            return;
+        }
+        if (!$actor->isGuest()) {
+            if ($post->user_id == $actor->id) {
+                return;
+            }
+            if ($post->likes()->where('user_id', $actor->id)->exists()) {
+                return;
+            }
+        }
+        $tags = $document->getElementsByTagName('LIKE');
+        /**
+         * @var DOMElement|DOMNameSpaceNode|DOMNode $tag
+         */
+        foreach ($tags->getIterator() as $tag) {
+            $tag->after($document->createElement("LIKE2SEE_ALERT"));
             $tag->remove();
         }
     }

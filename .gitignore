@@ -12,3 +12,6 @@ tests/.phpunit.result.cache
 js/coverage-ts
 js/package-lock.json
 js/yarn.lock
+
+js/node_modules
+.VSCodeCounter

@@ -1,118 +1,181 @@
 xypp-more-bbcode:
   admin:
+    settings:
+      misc:
+        title: 杂项
+        replace_md:
+          title: 隐藏原有的markdown按钮
+          all: 所有设备
+          tablet: 平板和手机
+          phone: 手机
+          none: 无
+        collect_all:
+          title: 收集所有的原有的其他按钮到一个单独分组
+          all: 所有设备
+          tablet: 平板和手机
+          phone: 手机
+          none: 无
+      functions:
+        title: 功能开关
+        desc: 关闭你想要关闭的功能。默认情况下，功能全部开启
+      cloud:
+        title: 云盘框配置
+        name: 名称
+        image: 图标
+        content: 内容提示
+        key: 键名（type）
+        confirm: 确定删除吗
+        add: 添加一行
+      save: 保存
     permissions:
-      bypass_like_label: Ignore the displayed likes
-      bypass_reply_label: Ignore the displayed answers
+      bypass_reply_label: 忽略回复查看标签
+      bypass_like_label: 忽略点赞查看标签
   forum:
-    lib:
-      bold_tooltip: Add bold text
-      code_tooltip: Insert code
-      header_tooltip: Add header text
-      image_tooltip: Add an image
-      italic_tooltip: Add italic text
-      link_tooltip: Add a link
-      ordered_list_tooltip: Add a numbered list
-      quote_tooltip: Insert a quote
-      spoiler_tooltip: Insert a spoiler
-      strikethrough_tooltip: Add strikethrough text
-      unordered_list_tooltip: Add a bulleted list
-    hidden_content: HIDDEN CONTENT
-    hidden_content_reply: Reply to displayed content
-    hidden_content_login: Log in displayed content
-    hidden_content_like: Liked to displayed content
-    reply_to_see: "This content requires {reply} and displays after refresh"
-    login_to_see: "This content requires {login} and is visible after refresh"
-    like_to_see: "This content requires {like} and is visible after refresh"
-    button_tooltip_reply: "Reply in to see"
-    button_tooltip_login: "Log in to see"
-    button_tooltip_like: "Likes in to see"
-    button_tooltip_cloud: "Download address"
-    button_tooltip_left: "Text on the left"
-    button_tooltip_center: "Text on the center"
-    button_tooltip_right: "Text on the right"
-    button_tooltip_justify: "Justified text"
-    button_tooltip_dropcap: "Text Dropcap"
-    button_tooltip_img: "Insert Images"
-    button_tooltip_img_left: "Insert Images Float Left"
-    button_tooltip_img_center: "Insert Images Center"
-    button_tooltip_img_right: "Insert Images Float Right"
-    button_tooltip_p_left: "Left padding"
-    button_tooltip_p_right: "Right padding"
-    button_tooltip_details: "Insert details"
-    button_tooltip_table: "Insert table"
-    button_tooltip_audio: "Insert audio"
-    button_tooltip_clip: "Insert clip"
-    button_tooltip_word: "Insert word"
-    button_tooltip_size: "Text Size"
-    button_tooltip_color: "Text Color"
-    button_tooltip_video: "Insert video"
-    button_tooltip_tab: "Insert Tab"
-    button_tooltip_ins: "Insert Text Underline"
-    button_tooltip_del: "Insert Text Strike-through"
-    button_tooltip_sup: "Insert Text Superscript"
-    button_tooltip_sub: "Insert Text Subscript"
-    button_tooltip_var: "Insert Text VAR"
-    button_tooltip_acronym: "Insert Text Acronym"
-    button_tooltip_background: "Insert Text Background (green, blue, purple, yellow, orange, red, silver, pink, brown, white, black)"
-    button_tooltip_hr: "Insert horizontal rule"
-    button_tooltip_float_left: "Insert Float Left"
-    button_tooltip_float_right: "Insert Float Right"
-    button_tooltip_demo: "Insert Text or Remove"
-    cloud_title: "Title"
-    cloud_url: "Url"
-    cloud_password: "Password (No blank)"
-    button_tooltip_down: "Insert Download"
-    button_tooltip_notification_warning: "Insert Warning"
-    button_tooltip_notification_asuccess: "Insert Asuccess"
-    button_tooltip_notification_ainfo: "Insert Ainfo"
-    button_tooltip_notification_abasic: "Insert Abasic"
-    button_tooltip_notification_acustom: "Insert Acustom"
-    button_tooltip_notification_bcustom: "Insert Bcustom"
-    button_tooltip_notification_bnotice: "Insert Bnotice"
-    button_tooltip_notification_bwarning: "Insert Bwarning"
-    button_tooltip_notification_bsuccess: "Insert Bsuccess"
-    button_tooltip_notification_berror: "Insert Berror"
-    button_tooltip_notification_cwarning: "Insert Cwarning"
-    button_tooltip_notification_cerror: "Insert Cerror"
-    button_tooltip_notification_cnotice: "Insert Cnotice"
-    button_tooltip_notification_csuccess: "Insert Csuccess"
-    button_tooltip_notification_dnotice: "Insert Dnotice"
-    button_tooltip_notification_derror: "Insert Derror"
-    button_tooltip_notification_dwarning: "Insert Dwarning"
-    button_tooltip_notification_dsuccess: "Insert Dsuccess"
-    button_tooltip_bar: "Insert Progress Bar"
-    button_tooltip_bar_black: "Insert Progress Bar Black"
-    button_tooltip_bar_blue: "Insert Progress Bar Blue"
-    button_tooltip_bar_red: "Insert Progress Bar Red"
-    button_tooltip_iframe: "Insert Iframe"
-    h2: H2
-    h3: H3
-    h4: H4
-    h5: H5
-    h6: H6
-    color_grey: Grey
-    color_green: Green
-    color_blue: Bule
-    color_purple: Purple
-    color_yellow: Yellow
-    color_orange: Orange
-    color_red: Red
-    color_silver: Silver
-    color_pink: Pink
-    color_brown: Brown
-    color_white: White
-    color_black: Black
-    size_18: Size 18
-    size_20: Size 20
-    size_22: Size 22
-    size_24: Size 24
-    size_26: Size 26
-    size_28: Size 28
-    size_30: Size 30
-    size_32: Size 32
-    size_34: Size 34
-    size_36: Size 36
-    size_38: Size 38
-    size_40: Size 40
-    quote:
-      wrote: wrote
+    name: 更多BBCode
+    collect: 收集的按钮
+    # Typography Part
+    fonts:
+      title: 字体样式
+      bold: 加粗
+      italic: 斜体
+      strike_through: 删除线
+      underline: 下划线
+    typography:
+      title: 排版
+      link: 链接
+      image: 图像
+      code: 代码
+      quote: 引用
+      spoiler: 黑幕
+      dropcap: 首字下沉
+      horizontal_line: 分割线
+      table: 表格
+      unordered_list: 无序列表
+      ordered_list: 有序列表
+    heading:
+      title: 标题
+      label: "{level}级"
+    align:
+      title: 对齐
+      align_left: 左对齐
+      align_center: 居中
+      align_right: 右对齐
+      align_justify: 一般
+      padding_left: 左缩进
+      padding_right: 右缩进
+      image_left: 图像左对齐
+      image_right: 图像右对齐
+      image_center: 图像居中
+    size:
+      title: 大小
+      label: "{size}px"
+    color:
+      title: 颜色
+      label: "{color}"
+    background:
+      title: 背景色
+      label: "{color}"
+    sign:
+      title: 标记
+      acronym: 关键字
+      subscript: 下标
+      superscript: 上标
+
+    # Utilities Part
+    container:
+      title: 容器
+      table: 表格
+      details: 详细信息
+      quote: 引用
+      code: 代码
+      alert: 警告框
+      tabs: 标签页
+      iframe: 嵌入页面
+    widgets:
+      title: 组件
+      progress: 进度条
+      alert: 警告框
+
+    #Embed
+    embed:
+      title: 媒体嵌入
+      cloud: 云盘下载框
+      down: 下载
+      clip: 视频
+      audio: 音频
+
+    #xx2see
+    xx2see:
+      title: 访问限制
+      reply:
+        title: 回复可见内容
+        deny: "此内容需要 {reply} 并刷新页面可见"
+      login:
+        title: 登录可见内容
+        deny: "该内容需要 {login} 后查看"
+      like:
+        title: 点赞可见内容
+        deny: "该内容需要 {like} 后刷新可见"
+        hasLiked: 你已经点过赞了，请刷新页面
+        cannot: 你不能给这个帖子点赞
+
+    #common replacement
+    common:
+      describe: 这里填写描述.
+      title: 这里是标题
+      text: 在此填写你的文本，在此填写你的文本，在此填写你的文本，在此填写你的文本
+      simple: 在此填写你的文本
+      url: "https://example.com"
+      size: 1kb
+      file: 文件.zip
+      any: "..."
+      column: 一列
+    #alert preview
+    alert:
+      title: 警告框
+      type:
+        label: 类型
+        success: 成功
+        warning: 警告
+        error: 错误/危险
+        notice: 提示/信息
+        custom: 自定义
+        basic: 基本
+      label:
+        success: 成功!
+        warning: 警告
+        error: 错误!
+        notice: 提示
+      style: 样式
+      insert: 插入
+      defaults:
+        title: 嗨,给你一个警告框!
+        content: "这是 {type} 类型框的 {style} 样式的默认内容"
+    # cloud preview
+    cloud:
+      title: 云盘下载预览
+      insert: 插入
+      type:
+        label: 云盘
+        other: 网络硬盘
+        github: Github项目
+        gitee: Gitee项目
+        ali: 阿里云盘
+        360: 360云盘
+        bd: 百度云盘
+        ty: 天翼云盘
+        ct: 城通网盘
+        tx: 腾讯微云
+        lz: 蓝奏云
+        123: 123盘
+        kk: 夸克网盘
+        google: 谷歌云端硬盘
+        one: OneDrive
+        f: Fshare
+        mega: Mega
+        dropbox: DropBox
+        mediafire: MediaFire
+      content:
+        defaults: 这里填写内容
+        version: " | 版本: "
+        password: " | 提取码: "
