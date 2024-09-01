@@ -1,6 +1,14 @@
 import app from "flarum/forum/app";
 import { StyleType } from "../helper/tagCollector";
 
+export function getValue<T>(key: string): T {
+    let value = (app.session?.user?.preferences() || {})["xypp-more-bbcode-" + key] as T | null | undefined;
+    if (!value) {
+        value = app.forum.attribute<T>("xypp-more-bbcode-" + key);
+    }
+    return value;
+}
+
 export function selectBBCodeOrNormal(bbcode: StyleType, normal: StyleType) {
     return () => {
         if (prefMarkdown()) {
@@ -11,27 +19,27 @@ export function selectBBCodeOrNormal(bbcode: StyleType, normal: StyleType) {
 }
 
 export function prefMarkdown() {
-    const pref: "all" | "none" | "collected" = (app.session?.user?.preferences() || {})["xypp-bbcode-more-pref-markdown"] || "none";
+    const pref: "all" | "none" | "collected" = getValue("pref-markdown");
     if (pref === "all") return true;
     if (pref === "none") return false;
-    return
+    return collectAll();
 }
 
 export function autoClose(): boolean {
-    const close = (app.session?.user?.preferences() || {})["xypp-bbcode-more-auto-close"] || "phone";
+    const close = getValue("auto-close") || "phone";
     return checkDevice(close);
 }
 export function collectAll(): boolean {
-    return checkDevice(app.forum.attribute("xypp-more-bbcode-collect_all"));
+    return checkDevice(getValue("collect-all"));
 }
 export function removeMd(): boolean {
-    return checkDevice(app.forum.attribute("xypp-more-bbcode-remove_markdown"));
+    return checkDevice(getValue("remove-markdown"));
 }
 export function collectMarkdown(): "none" | "first" | "sub" {
-    return app.forum.attribute("xypp-more-bbcode-collect_markdown");
+    return getValue("collect-markdown");
 }
 
-function checkDevice(target: "none" | "all" | "phone" | "tablet"): boolean {
+function checkDevice(target: "none" | "all" | "phone" | "tablet" | any): boolean {
     if (target == "none") return false;
     if (target == "all") return true;
     const current = app.screen();

@@ -4,25 +4,32 @@ xypp-more-bbcode:
       tip: |
         注意: 请确保在更改了功能/云盘下载框设置后运行过cache:clear。你的设置在你清除缓存来通知flarum重新生成render文件之前【不会】生效！
         【更改任何设置后，你都应该检查你的网站】
+      tip2: |
+        注意: 更改设置后请翻到底并点击保存按钮
       misc:
         title: 杂项
-        replace_md:
+        remove-markdown:
           title: 隐藏原有的markdown按钮
           all: 所有设备
           tablet: 平板和手机
           phone: 手机
           none: 无
-        collect_all:
-          title: 收集所有的原有的其他按钮到一个单独分组
+        collect-all:
+          title: 折叠所有的原有的其他按钮到一个单独分组
           all: 所有设备
           tablet: 平板和手机
           phone: 手机
           none: 无
-        collect_markdown:
-          title: 将Markdown加入Collect组
+        collect-markdown:
+          title: 将隐藏后的markdown加入到折叠分组
           first: 直接加入组
           sub: 加入子组
           none: 不创建
+        pref-markdown:
+          title: 在BBCode工具栏中优先使用Markdown语法
+          all: 总是
+          collected: 当Markdown工具栏被收起
+          none: 从不
       functions:
         title: 功能开关
         desc: 关闭你想要关闭的功能。默认情况下，功能全部开启
@@ -187,8 +194,9 @@ xypp-more-bbcode:
         version: " | 版本: "
         password: " | 提取码: "
 
+    preference-default: 该论坛上该值默认为 {default}
     auto-close:
-      title: 点击按钮后自动关闭浮窗
+      title: 点击BBCode工具栏中的按钮后自动关闭
       all: 所有设备
       tablet: 平板和手机
       phone: 手机
@@ -198,3 +206,20 @@ xypp-more-bbcode:
       all: 总是
       collected: 当Markdown工具栏被收起
       none: 从不
+    remove-markdown:
+      title: 隐藏原有的markdown按钮
+      all: 所有设备
+      tablet: 平板和手机
+      phone: 手机
+      none: 无
+    collect-all:
+      title: 折叠所有的原有的其他按钮到一个单独分组
+      all: 所有设备
+      tablet: 平板和手机
+      phone: 手机
+      none: 无
+    collect-markdown:
+      title: 将隐藏后的markdown加入到折叠分组
+      first: 直接加入组
+      sub: 加入子组
+      none: 不创建

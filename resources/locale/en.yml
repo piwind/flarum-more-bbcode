@@ -6,23 +6,28 @@ xypp-more-bbcode:
         CHECK YOUR WEBSITE AFTER ANY SETTINGS
       misc:
         title: Misc
-        replace_md:
+        remove-markdown:
           title: Hide the original markdown group
           all: For All Device
           tablet: Tablet and Phone
           phone: Phone
           none: None
-        collect_all:
-          title: Collect all other button into a new group
+        collect-all:
+          title: Collapse all other button into a new group
           all: For All Device
           tablet: Tablet and Phone
           phone: Phone
           none: None
-        collect_markdown:
-          title: Collect the markdown button into a new group
+        collect-markdown:
+          title: Collapse the markdown button in Collapsed
           first: Collect direct into the group
           sub: Create a sub group
           none: No create
+        pref-markdown:
+          title: Prefer use Markdown syntax in BBCode toolbar.
+          all: Always
+          collected: When Markdown Bar Hide
+          none: Never
       functions:
         title: Functions Switch
         desc: Disable the function as you wish. By default is all enable.
@@ -186,7 +191,8 @@ xypp-more-bbcode:
         defaults: Content Here
         version: " | Version: "
         password: " | Password: "
-  
+
+    preference-default: The default value is {default}
     auto-close:
       title: Auto close the toolbar after click
       all: All device
@@ -198,3 +204,20 @@ xypp-more-bbcode:
       all: Always
       collected: When Markdown Bar Hide
       none: Never
+    remove-markdown:
+      title: Hide the original markdown group
+      all: For All Device
+      tablet: Tablet and Phone
+      phone: Phone
+      none: None
+    collect-all:
+      title: Collapse all other button to a new group
+      all: For All Device
+      tablet: Tablet and Phone
+      phone: Phone
+      none: None
+    collect-markdown:
+      title: Collapse the markdown button to Collapsed group
+      first: Collect direct into the group
+      sub: Create a sub group
+      none: No create

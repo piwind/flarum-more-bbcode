@@ -3,6 +3,9 @@ import Select from 'flarum/common/components/Select';
 import FieldSet from "flarum/common/components/FieldSet"
 import { extend } from "flarum/common/extend";
 import SettingsPage from "flarum/forum/components/SettingsPage";
+import classList from 'flarum/common/utils/classList';
+import { showIf } from './utils/nodeUtil';
+import { getValue } from './utils/preferenceUtil';
 
 function _trans(key: string, params?: any): string {
     const dat = app.translator.trans("xypp-more-bbcode.forum." + key, params);
@@ -10,47 +13,35 @@ function _trans(key: string, params?: any): string {
     return dat;
 }
 export default function regSetting() {
-    const SELECT_AC = {
-        "all": _trans("auto-close.all"),
-        "tablet": _trans("auto-close.tablet"),
-        "phone": _trans("auto-close.phone"),
-        "none": _trans("auto-close.none")
-    }
-    const SELECT_MD = {
-        "all": _trans("pref-markdown.all"),
-        "collected": _trans("pref-markdown.collected"),
-        "none": _trans("pref-markdown.none")
+    const config: Record<string, string[]> = {
+        "auto-close": ["all", "tablet", "phone", "none"],
+        "pref-markdown": ["all", "collected", "none"],
+        "collect-all": ["all", "tablet", "phone", "none"],
+        "remove-markdown": ["all", "tablet", "phone", "none"],
+        "collect-markdown": ["first", "sub", "none"],
     }
     extend(SettingsPage.prototype, 'settingsItems', function (items) {
-        const close = (app.session?.user?.preferences() || {})["xypp-bbcode-more-auto-close"] || "phone";
-        const pref = (app.session?.user?.preferences() || {})["xypp-bbcode-more-pref-markdown"] || "all";
         items.add(
-            'xypp-bbcode-more-auto-close', [
-            <FieldSet label={_trans("auto-close.title")} className="Settings auto-close">
-                <Select
-                    options={SELECT_AC}
-                    value={close}
-                    onchange={(value: string) => {
-                        app.session.user!
-                            .savePreferences({
-                                "xypp-bbcode-more-auto-close": value
-                            });
-                    }}
-                />
-            </FieldSet>,
-            <FieldSet label={_trans("pref-markdown.title")} className="Settings pref-markdown">
-                <Select
-                    options={SELECT_MD}
-                    value={pref}
-                    onchange={(value: string) => {
-                        app.session.user!
-                            .savePreferences({
-                                "xypp-bbcode-more-pref-markdown": value
-                            });
-                    }}
-                />
-            </FieldSet>
-        ]
+            'xypp-more-bbcode', [
+            <h2>{_trans("name")}</h2>,
+            Object.keys(config).map((key) => {
+                const opts: Record<string, string> = {};
+                config[key].forEach(k => { opts[k] = _trans(`${key}.${k}`) });
+                const value = getValue(key) || config[key][0];
+                const fm = app.forum.attribute("xypp-more-bbcode-" + key);
+                return <FieldSet label={_trans(key + ".title")} className={classList("Settings", "Settings-" + key)}>
+                    <small className='setting-default-value'>{showIf(!!fm, _trans("preference-default", { "default": _trans(`${key}.${fm}`) }))}</small>
+                    <Select
+                        options={opts}
+                        value={value}
+                        onchange={(value: string) => {
+                            const saveObj: Record<string, string> = {}
+                            saveObj["xypp-more-bbcode-" + key] = value;
+                            app.session.user!.savePreferences(saveObj);
+                        }}
+                    />
+                </FieldSet>
+            })]
         );
     })
 }

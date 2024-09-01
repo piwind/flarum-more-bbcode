@@ -35,51 +35,66 @@ export default class adminPage extends ExtensionPage {
         super.oncreate(vnode);
     }
     content(vnode: any) {
-        return <div className="xypp-bbcode-more-adminPage-container container">
+        return <div className="xypp-more-bbcode-adminPage-container container">
             <Alert dismissible={false} type="warning">
                 {_trans("settings.tip")}
+            </Alert>
+            <Alert dismissible={false} type="info">
+                {_trans("settings.tip2")}
             </Alert>
             <h2>{_trans("settings.misc.title")}</h2>
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.remove_markdown',
-                    label: _trans("settings.misc.replace_md.title"),
+                    setting: 'xypp-more-bbcode.remove-markdown',
+                    label: _trans("settings.misc.remove-markdown.title"),
                     type: 'select',
                     options: {
-                        none: _trans("settings.misc.replace_md.none"),
-                        phone: _trans("settings.misc.replace_md.phone"),
-                        tablet: _trans("settings.misc.replace_md.tablet"),
-                        all: _trans("settings.misc.replace_md.all")
+                        none: _trans("settings.misc.remove-markdown.none"),
+                        phone: _trans("settings.misc.remove-markdown.phone"),
+                        tablet: _trans("settings.misc.remove-markdown.tablet"),
+                        all: _trans("settings.misc.remove-markdown.all")
                     }
                 })
             }
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.collect_all',
-                    label: _trans("settings.misc.collect_all.title"),
+                    setting: 'xypp-more-bbcode.collect-all',
+                    label: _trans("settings.misc.collect-all.title"),
                     type: 'select',
                     options: {
-                        none: _trans("settings.misc.collect_all.none"),
-                        phone: _trans("settings.misc.collect_all.phone"),
-                        tablet: _trans("settings.misc.collect_all.tablet"),
-                        all: _trans("settings.misc.collect_all.all")
+                        none: _trans("settings.misc.collect-all.none"),
+                        phone: _trans("settings.misc.collect-all.phone"),
+                        tablet: _trans("settings.misc.collect-all.tablet"),
+                        all: _trans("settings.misc.collect-all.all")
                     }
                 })
             }
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.collect_markdown',
-                    label: _trans("settings.misc.collect_markdown.title"),
+                    setting: 'xypp-more-bbcode.collect-markdown',
+                    label: _trans("settings.misc.collect-markdown.title"),
                     type: 'select',
                     options: {
-                        none: _trans("settings.misc.collect_markdown.none"),
-                        first: _trans("settings.misc.collect_markdown.first"),
-                        sub: _trans("settings.misc.collect_markdown.sub")
+                        none: _trans("settings.misc.collect-markdown.none"),
+                        first: _trans("settings.misc.collect-markdown.first"),
+                        sub: _trans("settings.misc.collect-markdown.sub")
+                    }
+                })
+            }
+            {
+                this.buildSettingComponent({
+                    setting: 'xypp-more-bbcode.pref-markdown',
+                    label: _trans("settings.misc.pref-markdown.title"),
+                    type: 'select',
+                    options: {
+                        none: _trans("settings.misc.pref-markdown.none"),
+                        collected: _trans("settings.misc.pref-markdown.collected"),
+                        all: _trans("settings.misc.pref-markdown.all")
                     }
                 })
             }
             <h2>{_trans("settings.functions.title")}</h2>
-            <div className="xypp-bbcode-more-function">
+            <div className="xypp-more-bbcode-function">
                 {this.getFunctionCheckboxes()}
             </div>
             <h2>{_trans("settings.cloud.title")}</h2>

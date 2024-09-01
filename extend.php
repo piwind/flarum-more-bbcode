@@ -30,15 +30,20 @@ return [
     (new Extend\Settings)
         ->default("xypp-more-bbcode.cloud", Cloud::$DEFAULT_VALUE)
         ->default("xypp-more-bbcode.disable", "{}")
-        ->default("xypp-more-bbcode.collect_all", "tablet")
-        ->default("xypp-more-bbcode.remove_markdown", "phone")
-        ->default("xypp-more-bbcode.collect_markdown", "sub")
-        ->serializeToForum("xypp-more-bbcode-remove_markdown", "xypp-more-bbcode.remove_markdown")
-        ->serializeToForum("xypp-more-bbcode-collect_all", "xypp-more-bbcode.collect_all")
-        ->serializeToForum("xypp-more-bbcode-collect_markdown", "xypp-more-bbcode.collect_markdown"),
+        ->default("xypp-more-bbcode.collect-all", "tablet")
+        ->default("xypp-more-bbcode.remove-markdown", "phone")
+        ->default("xypp-more-bbcode.collect-markdown", "sub")
+        ->default("xypp-more-bbcode.pref-markdown", "all")
+        ->serializeToForum("xypp-more-bbcode-remove-markdown", "xypp-more-bbcode.remove-markdown")
+        ->serializeToForum("xypp-more-bbcode-collect-all", "xypp-more-bbcode.collect-all")
+        ->serializeToForum("xypp-more-bbcode-collect-markdown", "xypp-more-bbcode.collect-markdown")
+        ->serializeToForum("xypp-more-bbcode-pref-markdown", "xypp-more-bbcode.pref-markdown"),
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(ForumAttributes::class),
     (new Extend\User)
-        ->registerPreference("xypp-bbcode-more-auto-close", null, "phone")
-        ->registerPreference("xypp-bbcode-more-pref-markdown", null, "none")
+        ->registerPreference("xypp-more-bbcode-auto-close")
+        ->registerPreference("xypp-more-bbcode-pref-markdown")
+        ->registerPreference("xypp-more-bbcode-collect-all")
+        ->registerPreference("xypp-more-bbcode-remove-markdown")
+        ->registerPreference("xypp-more-bbcode-collect-markdown")
 ];
