@@ -21,7 +21,9 @@ class LiteYouTubeTemplate
         if (!isset($config->MediaEmbed)) {
             return;
         }
-        $tag = $config->tags['YOUTUBE'];
-        $tag->template = '<lite-youtube videoid="{@id}"></lite-youtube>';
+        if ($config->tags->exists("YOUTUBE")) {
+            $tag = $config->tags['YOUTUBE'];
+            $tag->template = '<lite-youtube videoid="{@id}"></lite-youtube>';
+        }
     }
 }
