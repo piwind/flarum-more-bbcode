@@ -6,7 +6,8 @@ import { bbcode, merge, pair, prefix } from "../utils/styleUtil";
 import CommentPost from "flarum/forum/components/CommentPost";
 import ComposerPostPreview from "flarum/forum/components/ComposerPostPreview";
 import { extend } from "flarum/common/extend";
-import common from "../utils/commonReplace";
+import common from "../utils/commonReplaceUtil";
+import { selectBBCodeOrNormal } from "../utils/preferenceUtil";
 export default function addUtilitiesTags(tags: TagCollector, priority: () => number) {
     //Containers
     tags.group(priority(), "container",
@@ -17,15 +18,39 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
             tags.add(priority(), "table",
                 "fas fa-table",
                 "xypp-more-bbcode.forum.container.table",
-                prefix("\n| Column 1 | Column 2 | Column 3 | Column 4 |\n|---|---|---|---|\n| row 1 | row 2 | row 3 | row 4 |\n"));
+                selectBBCodeOrNormal(
+                    prefix(`
+[TABLE]
+    [THEAD]
+        [TH]${common("column")}[TH]
+        [TH]${common("column")}[TH]
+        [TH]${common("any")}[TH]
+    [/THEAD]
+    [TBODY]
+        [TR]
+            [TD]${common("text")}[TD]
+            [TD]${common("text")}[TD]
+            [TD]${common("any")}[TD]
+        [/TR]
+    [/TBODY]
+[/TABLE]
+`),
+                    prefix(`
+| ${common("column")} | ${common("column")} | ${common("column")} | ${common("column")} |
+|---|---|---|---|
+| ${common("any")} | ${common("any")} | ${common("any")} | ${common("any")} |
+`)
+                ));
             //Quote
             tags.add(priority(), "quote",
                 "fas fa-quote-right",
                 "xypp-more-bbcode.forum.container.quote",
-                merge(prefix(">"), {
-                    multiline: true,
-                    surroundWithNewlines: true
-                }));
+                selectBBCodeOrNormal(
+                    bbcode("[quote]"),
+                    merge(prefix(">"), {
+                        multiline: true,
+                        surroundWithNewlines: true
+                    })));
             //Details
             tags.add(priority(), "details",
                 "fas fa-info-circle",
@@ -58,29 +83,15 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
                 "xypp-more-bbcode.forum.container.iframe",
                 pair('<iframe width="100%"  height="370px" title="Iframe Example" src="' + common("url") + '">', '</iframe>')
             )
-        }
-    );
 
-    //Widgets
-    tags.group(priority(), "widgets",
-        "fas fa-bars",
-        "xypp-more-bbcode.forum.widgets.title", (tags) => {
-            const priority = prioritySerial(100, 100);
-            //Alert
-            tags.add(priority(), "alert",
-                "fas fa-exclamation-triangle",
-                "xypp-more-bbcode.forum.widgets.alert",
-                makeAlert
-            );
             //Progress
             tags.add(priority(), "progress",
                 "fas fa-percentage",
-                "xypp-more-bbcode.forum.widgets.progress",
+                "xypp-more-bbcode.forum.container.progress",
                 bbcode(`[pbar]${common("title")},51%,${common("simple")},black,red,pink,1,70,5,40`)
             );
         }
     );
-
     // RegTab
     extend(CommentPost.prototype, ["oncreate", "onupdate"], createTab);
     extend(ComposerPostPreview.prototype, "oncreate", function (this: ComposerPostPreview) {

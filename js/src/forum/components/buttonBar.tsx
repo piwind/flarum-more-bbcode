@@ -5,7 +5,7 @@ import TagCollector, { TagButton, TagButtonGroup, Tags, TagSpace } from "../help
 import { showIf } from "../utils/nodeUtil";
 import classList from "flarum/common/utils/classList"
 import styleSelectedText from "flarum/common/utils/styleSelectedText";
-import align from "../utils/hAlign";
+import align from "../utils/hAlignUtil";
 import Mithril from "mithril";
 
 // A Magic number that we use to calculate the height of sub buttons

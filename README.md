@@ -60,6 +60,11 @@ php flarum cache:clear
 
 ## 更新内容
 
+### v2.0.5
+
++ 添加了BBCode和Markdown的切换功能
++ 【注意】调整了默认配置。现在默认会输入BBCode而不是Markdown。该设置可以由用户修改
+
 ### v2.0.0
 
 - 合入了Litalino的Fork

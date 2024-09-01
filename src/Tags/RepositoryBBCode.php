@@ -37,7 +37,7 @@ class RepositoryBBCode
             $config->BBCodes->addFromRepository('S');
         if ($this->functions->isEnable("url"))
             $config->BBCodes->addFromRepository('URL');
-        if ($this->functions->isEnable("imagebb"))
+        if ($this->functions->isEnable("image"))
             $config->BBCodes->addFromRepository('IMG');
         if ($this->functions->isEnable("email"))
             $config->BBCodes->addFromRepository('EMAIL');
@@ -56,7 +56,8 @@ class RepositoryBBCode
             $config->BBCodes->addFromRepository('COLOR');
         if ($this->functions->isEnable("size"))
             $config->BBCodes->addFromRepository('SIZE');
-
+        if ($this->functions->isEnable("spoiler"))
+            $config->BBCodes->addFromRepository('SPOILER');
         // Align Codes
         if (
             $this->functions->isEnable("align-left") ||
@@ -89,5 +90,14 @@ class RepositoryBBCode
             $config->BBCodes->addFromRepository('HR');
         if ($this->functions->isEnable("acronym"))
             $config->BBCodes->addFromRepository('ACRONYM');
+
+        if ($this->functions->isEnable("table")) {
+            $config->BBCodes->addFromRepository("TABLE");
+            $config->BBCodes->addFromRepository("TR");
+            $config->BBCodes->addFromRepository("TD");
+            $config->BBCodes->addFromRepository("TH");
+            $config->BBCodes->addFromRepository("THEAD");
+            $config->BBCodes->addFromRepository("TBODY");
+        }
     }
 }

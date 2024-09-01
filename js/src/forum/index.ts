@@ -16,16 +16,10 @@ import TextEditorButton from "flarum/common/components/TextEditorButton";
 import { prioritySerial, showIf } from './utils/nodeUtil';
 import addEmbedTags from './tags/embed';
 import { addXX2SeeTags } from './tags/xx2see';
-import align from './utils/hAlign';
+import align from './utils/hAlignUtil';
 import regSetting from './settings';
-function checkDevice(target: "none" | "all" | "phone" | "tablet"): boolean {
-  if (target == "none") return false;
-  if (target == "all") return true;
-  const current = app.screen();
-  if (target === 'phone' && current === "phone") return true;
-  if (target === "tablet" && (current === "phone" || current === "tablet")) return true;
-  return false;
-}
+import { autoClose, collectAll, collectMarkdown, removeMd } from './utils/preferenceUtil';
+
 app.initializers.add('xypp/more-bbcode', () => {
   const tags = new TagCollector();
   const priority = prioritySerial(100, 100);
@@ -34,21 +28,35 @@ app.initializers.add('xypp/more-bbcode', () => {
   addEmbedTags(tags, priority);
   addXX2SeeTags(tags, priority);
   let hasAddCollectBtn = false;
+  let hasAddMarkdownGrp = false;
   let showMoreBBcodeButtons = false;
   extend(buttonBar.prototype, "clickEvent", function (this: buttonBar, val: any, tag: Tags) {
     if (tag.type === "group") return;
-    const close = (app.session?.user?.preferences() || {})["xypp-bbcode-more-auto-close"] || "phone";
-    if (checkDevice(close)) {
+    if (autoClose()) {
       showMoreBBcodeButtons = false;
       m.redraw();
     }
   })
   extend(TextEditor.prototype, "toolbarItems", function (this: TextEditor, items) {
-    const removeMd = checkDevice(app.forum.attribute("xypp-more-bbcode-remove_markdown"));
-    const collectAll = checkDevice(app.forum.attribute("xypp-more-bbcode-collect_all"));
-    if (removeMd) items.remove("markdown");
-    if (collectAll) {
-      if (!hasAddCollectBtn) tags.group(0, "collect", "fas fa-box-open", "xypp-more-bbcode.forum.collect", () => { });
+    const collect_all = collectAll();
+    const remove_markdown = removeMd();
+    const collect_markdown = collectMarkdown();
+
+    //Add Collect Group
+    if (collect_all || (collect_markdown != "none" && remove_markdown)) {
+      if (!hasAddCollectBtn) {
+        tags.group(0, "collect", "fas fa-box-open", "xypp-more-bbcode.forum.collect", () => { });
+        hasAddCollectBtn = true;
+      }
+    } else {
+      if (hasAddCollectBtn) {
+        tags.remove("collect");
+        hasAddCollectBtn = false;
+      }
+    }
+
+    let minPriority = 0;
+    if (collect_all) {
       const collect = tags.item("collect") as TagButtonGroup;
       collect.tags.clear();
       Object.keys(items.toObject()).forEach(function (key) {
@@ -57,10 +65,24 @@ app.initializers.add('xypp/more-bbcode', () => {
         const item = items.get(key);
         items.remove(key);
         collect.tags.collect(0 - p, key, item);
+        minPriority = Math.min(minPriority, 0 - p);
       });
-    } else if (hasAddCollectBtn) {
-      tags.remove("collect");
     }
+
+    //Add Markdown Group
+    if (remove_markdown) {
+      (tags.item("collect") as TagButtonGroup).tags.remove("markdown");
+      if (collect_markdown === "first") {
+        (tags.item("collect") as TagButtonGroup).tags.collect(minPriority - 1, "markdown", items.get("markdown"));
+      } else if (collect_markdown === "sub") {
+        (tags.item("collect") as TagButtonGroup).tags.group(minPriority - 1, "markdown", "fab fa-markdown", "xypp-more-bbcode.forum.markdown", g_tags => {
+          g_tags.collect(0, "markdown", items.get("markdown"));
+        });
+      }
+      items.remove("markdown");
+    }
+
+
     items.add("xypp-more-bbcode", TextEditorButton.component({
       className: "bbcode-more-btn Button Button--icon Button--link",
       position: "bottom",

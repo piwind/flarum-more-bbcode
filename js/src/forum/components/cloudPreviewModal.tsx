@@ -4,7 +4,7 @@ import { StyleArgs } from "../helper/tagCollector";
 import Select from "flarum/common/components/Select"
 import { bbcode } from "../utils/styleUtil";
 import Button from "flarum/common/components/Button";
-import common from "../utils/commonReplace";
+import common from "../utils/commonReplaceUtil";
 function _trans(key: string, params?: any): string {
     const dat = app.translator.trans("xypp-more-bbcode.forum.cloud." + key, params);
     if (Array.isArray(dat)) return dat.join("");

@@ -66,6 +66,18 @@ export default class adminPage extends ExtensionPage {
                     }
                 })
             }
+            {
+                this.buildSettingComponent({
+                    setting: 'xypp-more-bbcode.collect_markdown',
+                    label: _trans("settings.misc.collect_markdown.title"),
+                    type: 'select',
+                    options: {
+                        none: _trans("settings.misc.collect_markdown.none"),
+                        first: _trans("settings.misc.collect_markdown.first"),
+                        sub: _trans("settings.misc.collect_markdown.sub")
+                    }
+                })
+            }
             <h2>{_trans("settings.functions.title")}</h2>
             <div className="xypp-bbcode-more-function">
                 {this.getFunctionCheckboxes()}

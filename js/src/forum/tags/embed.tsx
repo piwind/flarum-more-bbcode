@@ -3,7 +3,7 @@ import TagCollector, { StyleArgs } from "../helper/tagCollector";
 import { prioritySerial } from "../utils/nodeUtil";
 import cloudPreviewModal from "../components/cloudPreviewModal";
 import { bbcode, prefix } from "../utils/styleUtil";
-import common from "../utils/commonReplace";
+import common from "../utils/commonReplaceUtil";
 
 export default function addEmbedTags(tags: TagCollector, priority: () => number) {
     tags.group(priority(), "embed",

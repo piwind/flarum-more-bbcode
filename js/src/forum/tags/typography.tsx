@@ -1,6 +1,7 @@
 import TagCollector from "../helper/tagCollector";
-import common from "../utils/commonReplace";
+import common from "../utils/commonReplaceUtil";
 import { prioritySerial } from "../utils/nodeUtil";
+import { selectBBCodeOrNormal } from "../utils/preferenceUtil";
 import { bbcode, merge, pair, prefix } from "../utils/styleUtil";
 
 export default function addTypographyButtons(tags: TagCollector, priority: () => number) {
@@ -13,17 +14,17 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
             tags.add(priority(), "bold",
                 "fas fa-bold",
                 "xypp-more-bbcode.forum.fonts.bold",
-                pair("**"));
+                selectBBCodeOrNormal(bbcode("[b]"), pair("**")));
             //Italic
             tags.add(priority(), "italic",
                 "fas fa-italic",
                 "xypp-more-bbcode.forum.fonts.italic",
-                pair("*"));
+                selectBBCodeOrNormal(bbcode("[i]"), pair("*")));
             // Strike through
             tags.add(priority(), "strike-through",
                 "fas fa-strikethrough",
                 "xypp-more-bbcode.forum.fonts.strike_through",
-                pair("~~"));
+                selectBBCodeOrNormal(bbcode("[del]"), pair("~~")));
             // Underline
             tags.add(priority(), "underline",
                 "fas fa-underline",
@@ -40,50 +41,58 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
             tags.add(priority(), "url",
                 "fas fa-link",
                 "xypp-more-bbcode.forum.typography.link",
-                merge(pair("[", "](" + common("url") + ")"), {
-                    replaceNext: 'https://',
-                    scanFor: 'https?://'
-                }));
+                selectBBCodeOrNormal(
+                    bbcode(`[URL=${common("url")} title=${common("title")}]`),
+                    merge(pair("[", "](" + common("url") + ")"), {
+                        replaceNext: 'https://',
+                        scanFor: 'https?://'
+                    })));
             //Image
             tags.add(priority(), "image",
                 "fas fa-image",
                 "xypp-more-bbcode.forum.typography.image",
-                merge(pair('![', '](' + common("url") + ')'), {
-                    replaceNext: 'https://',
-                    scanFor: 'https?://'
-                }));
-            //Image
-            tags.add(priority(), "imagebb",
-                () => <div className="stackIcon">
-                    <i className="fas fa-image main" />
-                    <i className="fas fa-code rb-corner" />
-                </div>,
-                "xypp-more-bbcode.forum.typography.imagebb",
-                prefix(`[IMG src="${common("url")}" title="${common("title")}" alt="${common("simple")}" height="auto" width="auto"]`));
+                selectBBCodeOrNormal(
+                    prefix(`[IMG src="${common("url")}" title="${common("title")}" alt="${common("simple")}" height="auto" width="auto"]`),
+                    merge(pair('![', '](' + common("url") + ')'), {
+                        replaceNext: 'https://',
+                        scanFor: 'https?://'
+                    })));
             //Quote
             tags.add(priority(), "quote",
                 "fas fa-quote-right",
                 "xypp-more-bbcode.forum.typography.quote",
-                merge(prefix("> "), {
-                    multiline: true,
-                    surroundWithNewlines: true
-                }));
+                selectBBCodeOrNormal(
+                    merge(bbcode("[quote]"), {
+                        multiline: true
+                    }),
+                    merge(prefix("> "), {
+                        multiline: true,
+                        surroundWithNewlines: true
+                    })));
             //Code
             tags.add(priority(), "code",
                 "fas fa-code",
                 "xypp-more-bbcode.forum.typography.code",
-                merge(pair("`", undefined, false), {
-                    blockPrefix: '```',
-                    blockSuffix: '```'
-                }));
+                selectBBCodeOrNormal(
+                    merge(bbcode(`[code lang=${common("any")}]`), {
+                        multiline: true
+                    }),
+                    merge(pair("`", undefined, false), {
+                        blockPrefix: '```',
+                        blockSuffix: '```'
+                    })));
             //Spoiler
             tags.add(priority(), "spoiler",
                 "fas fa-eye-slash",
                 "xypp-more-bbcode.forum.typography.spoiler",
-                merge(pair(">!", "!<"), {
-                    blockPrefix: '>! ',
-                    multiline: true
-                }));
+                selectBBCodeOrNormal(
+                    merge(bbcode(`[spoiler title=${common("title")}]`), {
+                        multiline: true
+                    }),
+                    merge(pair(">!", "!<"), {
+                        blockPrefix: '>! ',
+                        multiline: true
+                    })));
             //Dropcap
             tags.add(priority(), "dropcap",
                 "fas fa-caret-right",
@@ -99,27 +108,62 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
             tags.add(priority(), "table",
                 "fas fa-table",
                 "xypp-more-bbcode.forum.typography.table",
-                prefix(`
+                selectBBCodeOrNormal(
+                    prefix(`
+[TABLE]
+    [THEAD]
+        [TH]${common("column")}[TH]
+        [TH]${common("column")}[TH]
+        [TH]${common("any")}[TH]
+    [/THEAD]
+    [TBODY]
+        [TR]
+            [TD]${common("text")}[TD]
+            [TD]${common("text")}[TD]
+            [TD]${common("any")}[TD]
+        [/TR]
+    [/TBODY]
+[/TABLE]
+`),
+                    prefix(`
 | ${common("column")} | ${common("column")} | ${common("column")} | ${common("column")} |
 |---|---|---|---|
 | ${common("any")} | ${common("any")} | ${common("any")} | ${common("any")} |
-                    `));
+`)
+                ));
             //Unordered List
             tags.add(priority(), "list-ul",
                 "fas fa-list-ul",
                 "xypp-more-bbcode.forum.typography.unordered_list",
-                merge(prefix("\n- "), {
-                    multiline: true,
-                    surroundWithNewlines: true
-                }));
+                selectBBCodeOrNormal(
+                    prefix(`
+[list]
+[*]${common("any")}
+[*]${common("any")}
+[*]${common("any")}
+[/list]
+`),
+                    merge(prefix("\n- "), {
+                        multiline: true,
+                        surroundWithNewlines: true
+                    })));
             //Ordered List
             tags.add(priority(), "list-ol",
                 "fas fa-list-ol",
                 "xypp-more-bbcode.forum.typography.ordered_list",
-                merge(prefix("\n1. "), {
-                    multiline: true,
-                    orderedList: true
-                }));
+                selectBBCodeOrNormal(
+                    prefix(`
+[list=1]
+[*]${common("any")}
+[*]${common("any")}
+[*]${common("any")}
+[/list]
+`),
+                    merge(prefix("\n1. "), {
+                        multiline: true,
+                        orderedList: true,
+                        surroundWithNewlines: true
+                    })));
         }
     )
     //Heading
@@ -133,7 +177,7 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
                 tags.add(priority(), "heading-" + level,
                     false,
                     { key: "xypp-more-bbcode.forum.heading.label", params: { level: level } },
-                    pair("#".repeat(level)));
+                    selectBBCodeOrNormal(bbcode(`[H${level}]`), pair("#".repeat(level))));
             });
         }
     );

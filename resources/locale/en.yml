@@ -18,6 +18,11 @@ xypp-more-bbcode:
           tablet: Tablet and Phone
           phone: Phone
           none: None
+        collect_markdown:
+          title: Collect the markdown button into a new group
+          first: Collect direct into the group
+          sub: Create a sub group
+          none: No create
       functions:
         title: Functions Switch
         desc: Disable the function as you wish. By default is all enable.
@@ -36,6 +41,7 @@ xypp-more-bbcode:
   forum:
     name: BBCode More
     collect: Collected Buttons
+    markdown: Markdown
     # Typography Part
     fonts:
       title: Font Styles
@@ -95,10 +101,7 @@ xypp-more-bbcode:
       alert: Alert
       tabs: Tab
       iframe: IFrame
-    widgets:
-      title: Widgets
       progress: Progress Bar
-      alert: Alert
 
     #Embed
     embed:
@@ -190,3 +193,8 @@ xypp-more-bbcode:
       tablet: Tablet and Phone
       phone: Phone
       none: None
+    pref-markdown:
+      title: Prefer use Markdown syntax in BBCode toolbar.
+      all: Always
+      collected: When Markdown Bar Hide
+      none: Never

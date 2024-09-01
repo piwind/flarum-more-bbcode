@@ -30,12 +30,15 @@ return [
     (new Extend\Settings)
         ->default("xypp-more-bbcode.cloud", Cloud::$DEFAULT_VALUE)
         ->default("xypp-more-bbcode.disable", "{}")
-        ->default("xypp-more-bbcode.collect_all", "none")
-        ->default("xypp-more-bbcode.remove_markdown", "none")
+        ->default("xypp-more-bbcode.collect_all", "tablet")
+        ->default("xypp-more-bbcode.remove_markdown", "phone")
+        ->default("xypp-more-bbcode.collect_markdown", "sub")
         ->serializeToForum("xypp-more-bbcode-remove_markdown", "xypp-more-bbcode.remove_markdown")
-        ->serializeToForum("xypp-more-bbcode-collect_all", "xypp-more-bbcode.collect_all"),
+        ->serializeToForum("xypp-more-bbcode-collect_all", "xypp-more-bbcode.collect_all")
+        ->serializeToForum("xypp-more-bbcode-collect_markdown", "xypp-more-bbcode.collect_markdown"),
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(ForumAttributes::class),
     (new Extend\User)
         ->registerPreference("xypp-bbcode-more-auto-close", null, "phone")
+        ->registerPreference("xypp-bbcode-more-pref-markdown", null, "none")
 ];
