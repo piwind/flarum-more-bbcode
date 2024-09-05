@@ -70,7 +70,7 @@ app.initializers.add('xypp/more-bbcode', () => {
     }
 
     //Add Markdown Group
-    if (remove_markdown) {
+    if (remove_markdown && items.has("markdown")) {
       (tags.item("collect") as TagButtonGroup).tags.remove("markdown");
       if (collect_markdown === "first") {
         (tags.item("collect") as TagButtonGroup).tags.collect(minPriority - 1, "markdown", items.get("markdown"));
