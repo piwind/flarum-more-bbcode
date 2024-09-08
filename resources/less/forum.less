@@ -299,8 +299,18 @@ details {
     clear: both;
     margin: 25px 0;
 
+    .tabs-title {
+      max-width: 100%;
+      overflow-x: auto;
+      height: 40px;
+      border: 1px solid @muted-color;
+      border-bottom: none;
+      white-space: nowrap;
+      overflow-y: hidden;
+    }
+
     .tab {
-      float: left;
+      display: inline-block;
 
       &:first-of-type label {
         border-top-left-radius: var(--border-radius);
@@ -315,7 +325,7 @@ details {
       background: @body-bg;
       padding: 10px 10px 7px;
       border: 1px solid @muted-color;
-      margin-left: -1px;
+      margin-left: -4px;
       position: relative;
       left: 1px;
     }
@@ -325,15 +335,17 @@ details {
     }
 
     .content {
+      padding-top: 0;
       display: none;
       position: absolute;
-      top: 28px;
+      top: 40px;
       left: 0;
       background: var(--body-bg);
       right: 0;
       bottom: 0;
       padding: 10px 20px;
       border: 1px solid var(--muted-color);
+      border-top: none;
       border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
       overflow-y: auto;
     }
@@ -341,14 +353,14 @@ details {
     [type=radio]:checked~label {
       background: var(--control-bg);
       font-weight: bold;
-      border-bottom: 1px solid var(--primary-color);
-
+      border-bottom: 3px solid var(--primary-color);
     }
 
     [type=radio]:checked~label~.content {
       display: block;
     }
   }
+
 }
 
 //BBCode Alerts

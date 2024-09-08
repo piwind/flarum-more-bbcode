@@ -35,7 +35,7 @@ class Container
         if ($this->functions->isEnable("tabs")) {
             $config->BBCodes->addCustom(
                 '[tabs]{TEXT}[/tabs]',
-                '<div class="tabs"><xsl:apply-templates/></div>'
+                '<div class="tabs"><div class="tabs-title"><xsl:apply-templates/></div></div>'
             );
             $config->BBCodes->addCustom(
                 '[tab name={ANYTHING} active={ANYTHING?}]{TEXT}[/tab]',

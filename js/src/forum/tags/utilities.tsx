@@ -120,7 +120,7 @@ function createTab(this: CommentPost | ComposerPostPreview) {
         const $container = $(container);
 
         if ($container.find('input[type="radio"][name]').length) return;
-        const $inputs = $container.find('> .tab > input[type="radio"]');
+        const $inputs = $container.find('.tabs-title > .tab > input[type="radio"]');
 
         if (!$inputs.length) return;
 
