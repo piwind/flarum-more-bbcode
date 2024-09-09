@@ -43,16 +43,22 @@ class Rendering
         $xml = preg_replace("/<\?xml[^>]*>/", "", $xml);
         return $xml;
     }
-
+    protected function extractNodes($tags){
+        $list = [];
+        foreach ($tags->getIterator() as $tag) {
+            $list[] = $tag;
+        }
+        return $list;
+    }
 
     protected function login2seeProcess(User $actor, DOMDocument $document)
     {
         if ($actor->isGuest()) {
-            $tags = $document->getElementsByTagName('LOGIN');
+            $tags = $this->extractNodes($document->getElementsByTagName('LOGIN'));
             /**
              * @var DOMElement|DOMNameSpaceNode|DOMNode $tag
              */
-            foreach ($tags->getIterator() as $tag) {
+            foreach ($tags as $tag) {
                 $tag->after($document->createElement("LOGIN2SEE_GUEST"));
                 $tag->remove();
             }
@@ -69,11 +75,11 @@ class Rendering
                 return;
             }
         }
-        $tags = $document->getElementsByTagName('REPLY');
+        $tags = $this->extractNodes($document->getElementsByTagName('REPLY'));
         /**
          * @var DOMElement|DOMNameSpaceNode|DOMNode $tag
          */
-        foreach ($tags->getIterator() as $tag) {
+        foreach ($tags as $tag) {
             $tag->after($document->createElement("REPLY2SEE_ALERT"));
             $tag->remove();
         }
@@ -92,11 +98,11 @@ class Rendering
                 return;
             }
         }
-        $tags = $document->getElementsByTagName('LIKE');
+        $tags = $this->extractNodes($document->getElementsByTagName('LIKE'));
         /**
          * @var DOMElement|DOMNameSpaceNode|DOMNode $tag
          */
-        foreach ($tags->getIterator() as $tag) {
+        foreach ($tags as $tag) {
             $tag->after($document->createElement("LIKE2SEE_ALERT"));
             $tag->remove();
         }
