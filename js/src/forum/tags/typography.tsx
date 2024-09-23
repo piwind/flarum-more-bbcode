@@ -177,7 +177,7 @@ export default function addTypographyButtons(tags: TagCollector, priority: () =>
                 tags.add(priority(), "heading-" + level,
                     false,
                     { key: "xypp-more-bbcode.forum.heading.label", params: { level: level } },
-                    selectBBCodeOrNormal(bbcode(`[H${level}]`), pair("#".repeat(level))));
+                    selectBBCodeOrNormal(bbcode(`[H${level}]`), pair("#".repeat(level) + " ", " " + ("#".repeat(level)))));
             });
         }
     );
