@@ -27,7 +27,7 @@ class Configure
         Tags\RepositoryHtml $repositoryHtml,
         Tags\Typography $typography,
         Tags\Widget $widget,
-        Tags\XXXToSee $xxxToSee,
+        Tags\XXXToSee $xxxToSee
     ) {
         $this->tags = [
             $cloud,
