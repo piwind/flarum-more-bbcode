@@ -14,6 +14,7 @@ namespace Xypp\MoreBBCode;
 use DOMDocument;
 use DOMElement;
 use Flarum\Discussion\Discussion;
+use Flarum\Extension\ExtensionManager;
 use Flarum\Http\RequestUtil;
 use Flarum\Post\CommentPost;
 use Flarum\Post\Post;
@@ -25,6 +26,11 @@ use Symfony\Component\Config\Util\XmlUtils;
 
 class Rendering
 {
+    protected $extensionManager;
+    public function __construct(ExtensionManager $extensionManager)
+    {
+        $this->extensionManager = $extensionManager;
+    }
     public function __invoke(Renderer $renderer, $context, string $xml, ?ServerRequestInterface $request)
     {
         $post = $context;
@@ -43,7 +49,8 @@ class Rendering
         $xml = preg_replace("/<\?xml[^>]*>/", "", $xml);
         return $xml;
     }
-    protected function extractNodes($tags){
+    protected function extractNodes($tags)
+    {
         $list = [];
         foreach ($tags->getIterator() as $tag) {
             $list[] = $tag;
@@ -87,6 +94,9 @@ class Rendering
 
     protected function like2seeProcess(User $actor, DOMDocument $document, Post $post)
     {
+        if (!$this->extensionManager->isEnabled('flarum-likes')) {
+            return;
+        }
         if ($actor->hasPermission('post.bypassLikeRequirement')) {
             return;
         }
