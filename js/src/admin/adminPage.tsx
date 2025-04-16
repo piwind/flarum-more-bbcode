@@ -125,7 +125,7 @@ export default class adminPage extends ExtensionPage {
                             }).bind(this)} /></td>
                             <td>
                                 <Button onclick={(() => {
-                                    if (!confirm(_trans("settings.cloud.confirm")))
+                                    if (confirm(_trans("settings.cloud.confirm")))
                                         this.cloud.splice(index, 1);
                                     m.redraw();
                                 }).bind(this)}>
