@@ -1,5 +1,5 @@
 /*
- * This file is part of Xypp/more-bbcode.
+ * This file is part of flarum-more-bbcode.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,7 +20,7 @@ import align from './utils/hAlignUtil';
 import regSetting from './settings';
 import { autoClose, collectAll, collectMarkdown, removeMd } from './utils/preferenceUtil';
 
-app.initializers.add('xypp/more-bbcode', () => {
+app.initializers.add('piwind/more-bbcode', () => {
   const tags = new TagCollector();
   const priority = prioritySerial(100, 100);
   addTypographyButtons(tags, priority);
@@ -45,7 +45,7 @@ app.initializers.add('xypp/more-bbcode', () => {
     //Add Collect Group
     if (collect_all || (collect_markdown != "none" && remove_markdown)) {
       if (!hasAddCollectBtn) {
-        tags.group(0, "collect", "fas fa-box-open", "xypp-more-bbcode.forum.collect", () => { });
+        tags.group(0, "collect", "fas fa-box-open", "piwind-more-bbcode.forum.collect", () => { });
         hasAddCollectBtn = true;
       }
     } else {
@@ -75,7 +75,7 @@ app.initializers.add('xypp/more-bbcode', () => {
       if (collect_markdown === "first") {
         (tags.item("collect") as TagButtonGroup).tags.collect(minPriority - 1, "markdown", items.get("markdown"));
       } else if (collect_markdown === "sub") {
-        (tags.item("collect") as TagButtonGroup).tags.group(minPriority - 1, "markdown", "fab fa-markdown", "xypp-more-bbcode.forum.markdown", g_tags => {
+        (tags.item("collect") as TagButtonGroup).tags.group(minPriority - 1, "markdown", "fab fa-markdown", "piwind-more-bbcode.forum.markdown", g_tags => {
           g_tags.collect(0, "markdown", items.get("markdown"));
         });
       }
@@ -83,7 +83,7 @@ app.initializers.add('xypp/more-bbcode', () => {
     }
 
 
-    items.add("xypp-more-bbcode", TextEditorButton.component({
+    items.add("piwind-more-bbcode", TextEditorButton.component({
       className: "bbcode-more-btn Button Button--icon Button--link",
       position: "bottom",
       onclick: (e: any) => {
@@ -92,9 +92,9 @@ app.initializers.add('xypp/more-bbcode', () => {
         m.redraw();
       },
       icon: showIf(showMoreBBcodeButtons, "fa fa-minus", "fa fa-plus")
-    }, app.translator.trans("xypp-more-bbcode.forum.name")));
+    }, app.translator.trans("piwind-more-bbcode.forum.name")));
     if (showMoreBBcodeButtons && (this.attrs as any)?.composer?.editor?.el)
-      items.add("xypp-more-bbcode-buttons", buttonBar.component({
+      items.add("piwind-more-bbcode-buttons", buttonBar.component({
         tagCollect: tags,
         className: "main-entry",
         textEditor: (this.attrs as any).composer.editor.el,

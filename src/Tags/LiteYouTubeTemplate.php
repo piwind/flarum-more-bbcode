@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xypp/more-bbcode.
+ * This file is part of flarum-more-bbcode.
  *
  * Copyright (c) 2022 Sami Mazouz.
  * Copyright (c) 2024 小鱼飘飘
@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Xypp\MoreBBCode\Tags;
+namespace Piwind\MoreBBCode\Tags;
 
 use s9e\TextFormatter\Configurator;
 

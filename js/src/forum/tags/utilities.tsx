@@ -12,12 +12,12 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
     //Containers
     tags.group(priority(), "container",
         "fas fa-square",
-        "xypp-more-bbcode.forum.container.title", (tags) => {
+        "piwind-more-bbcode.forum.container.title", (tags) => {
             const priority = prioritySerial(100, 100);
             //Table
             tags.add(priority(), "table",
                 "fas fa-table",
-                "xypp-more-bbcode.forum.container.table",
+                "piwind-more-bbcode.forum.container.table",
                 selectBBCodeOrNormal(
                     prefix(`
 [TABLE]
@@ -44,7 +44,7 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
             //Quote
             tags.add(priority(), "quote",
                 "fas fa-quote-right",
-                "xypp-more-bbcode.forum.container.quote",
+                "piwind-more-bbcode.forum.container.quote",
                 selectBBCodeOrNormal(
                     bbcode("[quote]"),
                     merge(prefix(">"), {
@@ -54,14 +54,14 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
             //Details
             tags.add(priority(), "details",
                 "fas fa-info-circle",
-                "xypp-more-bbcode.forum.container.details",
+                "piwind-more-bbcode.forum.container.details",
                 merge(bbcode("[details=\"TITLE\"] CONTENT "), {
                     blockPrefix: '[/details]'
                 }));
             //Tabs
             tags.add(priority(), "tabs",
                 "fas fa-columns",
-                "xypp-more-bbcode.forum.container.tabs",
+                "piwind-more-bbcode.forum.container.tabs",
                 prefix(`
 [tabs]
 [tab=\"${common("column")}\"]${common("text")}[/tab]
@@ -71,7 +71,7 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
             //Alert
             tags.add(priority(), "alert",
                 "fas fa-exclamation-triangle",
-                "xypp-more-bbcode.forum.container.alert",
+                "piwind-more-bbcode.forum.container.alert",
                 makeAlert
             );
 
@@ -80,14 +80,14 @@ export default function addUtilitiesTags(tags: TagCollector, priority: () => num
             //IFrame
             tags.add(priority(), "iframe",
                 "fas fa-window-maximize",
-                "xypp-more-bbcode.forum.container.iframe",
+                "piwind-more-bbcode.forum.container.iframe",
                 pair('<iframe width="100%"  height="370px" title="Iframe Example" src="' + common("url") + '">', '</iframe>')
             )
 
             //Progress
             tags.add(priority(), "progress",
                 "fas fa-percentage",
-                "xypp-more-bbcode.forum.container.progress",
+                "piwind-more-bbcode.forum.container.progress",
                 bbcode(`[pbar]${common("title")},51%,${common("simple")},black,red,pink,1,70,5,40`)
             );
         }

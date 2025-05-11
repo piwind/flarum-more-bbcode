@@ -5,7 +5,7 @@ import Select from "flarum/common/components/Select"
 import { bbcode } from "../utils/styleUtil";
 import Button from "flarum/common/components/Button";
 function _trans(key: string, params?: any): string {
-    const dat = app.translator.trans("xypp-more-bbcode.forum.alert." + key, params);
+    const dat = app.translator.trans("piwind-more-bbcode.forum.alert." + key, params);
     if (Array.isArray(dat)) return dat.join("");
     return dat;
 }
@@ -57,7 +57,7 @@ export default class alertPreviewModal extends Modal<{
         });
         return <div className="Modal-body">
             <div className="Form-group">
-                <label for="xypp-more-bbcode-alert-type">
+                <label for="piwind-more-bbcode-alert-type">
                     {_trans("type.label")}
                 </label>
                 <Select options={this.typesOpt} value={this.type} onchange={((e: string) => {
@@ -66,7 +66,7 @@ export default class alertPreviewModal extends Modal<{
                 }).bind(this)}></Select>
             </div>
             <div className="Form-group">
-                <label for="xypp-more-bbcode-alert-type">
+                <label for="piwind-more-bbcode-alert-type">
                     {_trans("style")}
                 </label>
                 <Select options={availableDict} value={this.style} onchange={((e: string) => {

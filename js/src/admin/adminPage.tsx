@@ -8,7 +8,7 @@ import Alert from "flarum/common/components/Alert";
 const FUNCTIONS = new Set(["cloud", "detail", "tabs", "size", "color", "audio", "download", "clip", "gdoc", "litedown", "table", "spoiler", "bold", "italic", "underline", "strike_through", "url", "image", "imagebb", "email", "code", "quote", "list-ul", "list-ol", "color", "size", "align-left", "align-right", "align-center", "align", "align-center", "align-left", "align-right", "justify", "background", "subscript", "superscript", "strike-through", "underline", "horizontal-line", "acronym", "iframe", "padding-left", "padding-right", "image-right", "image-center", "image-right", "dropcap", "indent", "progress", "alert", "reply", "login", "login", "like"]);
 
 function _trans(key: string, params?: any): string {
-    const dat = app.translator.trans("xypp-more-bbcode.admin." + key, params);
+    const dat = app.translator.trans("piwind-more-bbcode.admin." + key, params);
     if (Array.isArray(dat)) return dat.join("");
     return dat;
 }
@@ -21,8 +21,8 @@ export default class adminPage extends ExtensionPage {
     saving: boolean = false;
     oninit(vnode: any): void {
         super.oninit(vnode);
-        this.setting_disables = this.setting("xypp-more-bbcode.disable");
-        this.setting_cloud = this.setting("xypp-more-bbcode.cloud");
+        this.setting_disables = this.setting("piwind-more-bbcode.disable");
+        this.setting_cloud = this.setting("piwind-more-bbcode.cloud");
         this.disables = JSON.parse(this.setting_disables() || "{}");
         const cloudTmp = JSON.parse(this.setting_cloud());
         Object.keys(cloudTmp).forEach(key => {
@@ -35,7 +35,7 @@ export default class adminPage extends ExtensionPage {
         super.oncreate(vnode);
     }
     content(vnode: any) {
-        return <div className="xypp-more-bbcode-adminPage-container container">
+        return <div className="piwind-more-bbcode-adminPage-container container">
             <Alert dismissible={false} type="warning">
                 {_trans("settings.tip")}
             </Alert>
@@ -45,7 +45,7 @@ export default class adminPage extends ExtensionPage {
             <h2>{_trans("settings.misc.title")}</h2>
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.remove-markdown',
+                    setting: 'piwind-more-bbcode.remove-markdown',
                     label: _trans("settings.misc.remove-markdown.title"),
                     type: 'select',
                     options: {
@@ -58,7 +58,7 @@ export default class adminPage extends ExtensionPage {
             }
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.collect-all',
+                    setting: 'piwind-more-bbcode.collect-all',
                     label: _trans("settings.misc.collect-all.title"),
                     type: 'select',
                     options: {
@@ -71,7 +71,7 @@ export default class adminPage extends ExtensionPage {
             }
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.collect-markdown',
+                    setting: 'piwind-more-bbcode.collect-markdown',
                     label: _trans("settings.misc.collect-markdown.title"),
                     type: 'select',
                     options: {
@@ -83,7 +83,7 @@ export default class adminPage extends ExtensionPage {
             }
             {
                 this.buildSettingComponent({
-                    setting: 'xypp-more-bbcode.pref-markdown',
+                    setting: 'piwind-more-bbcode.pref-markdown',
                     label: _trans("settings.misc.pref-markdown.title"),
                     type: 'select',
                     options: {
@@ -94,7 +94,7 @@ export default class adminPage extends ExtensionPage {
                 })
             }
             <h2>{_trans("settings.functions.title")}</h2>
-            <div className="xypp-more-bbcode-function">
+            <div className="piwind-more-bbcode-function">
                 {this.getFunctionCheckboxes()}
             </div>
             <h2>{_trans("settings.cloud.title")}</h2>

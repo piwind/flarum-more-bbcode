@@ -1,14 +1,14 @@
 <?php
 
-namespace Xypp\MoreBBCode\Tags;
+namespace Piwind\MoreBBCode\Tags;
 use Flarum\Locale\Translator;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Filesystem\Factory;
 use s9e\TextFormatter\Configurator;
-use Xypp\MoreBBCode\Helper\FunctionHelper;
+use Piwind\MoreBBCode\Helper\FunctionHelper;
 class Cloud
 {
-    public static $DEFAULT_VALUE = '{"other":{"name":"@.other","content":"@.password","image":"assets://xypp-more-bbcode/cloud/other.svg"},"github":{"name":"@.github","content":"@.version","image":"assets://xypp-more-bbcode/cloud/github.svg"},"gitee":{"name":"@.gitee","content":"@.version","image":"assets://xypp-more-bbcode/cloud/gitee.png"},"bd":{"name":"@.bd","content":"@.password","image":"assets://xypp-more-bbcode/cloud/baidu.svg"},"360":{"name":"@.360","content":"@.password","image":"assets://xypp-more-bbcode/cloud/360.svg"},"ty":{"name":"@.ty","content":"@.password","image":"assets://xypp-more-bbcode/cloud/tianyi.svg"},"ali":{"name":"@.ali","content":"@.password","image":"assets://xypp-more-bbcode/cloud/ali.png"},"ct":{"name":"@.ct","content":"@.password","image":"assets://xypp-more-bbcode/cloud/ct.svg"},"tx":{"name":"@.tx","content":"@.password","image":"assets://xypp-more-bbcode/cloud/tx.svg"},"lz":{"name":"@.lz","content":"@.password","image":"assets://xypp-more-bbcode/cloud/lz.svg"},"123":{"name":"@.123","content":"@.password","image":"assets://xypp-more-bbcode/cloud/123.png"},"kk":{"name":"@.quark","content":"@.password","image":"assets://xypp-more-bbcode/cloud/quark.png"},"google":{"name":"@.google","content":"@.password","image":"assets://xypp-more-bbcode/cloud/google.png"},"one":{"name":"@.one","content":"@.password","image":"assets://xypp-more-bbcode/cloud/onedrive.png"},"f":{"name":"@.f","content":"@.password","image":"assets://xypp-more-bbcode/cloud/f.png"},"mega":{"name":"@.mega","content":"@.password","image":"assets://xypp-more-bbcode/cloud/mega.png"},"dropbox":{"name":"@.dropbox","content":"@.password","image":"assets://xypp-more-bbcode/cloud/dropbox.png"},"mediafire":{"name":"@.mediafire","content":"@.password","image":"assets://xypp-more-bbcode/cloud/mediafire.jpg"}}';
+    public static $DEFAULT_VALUE = '{"other":{"name":"@.other","content":"@.password","image":"assets://piwind-more-bbcode/cloud/other.svg"},"github":{"name":"@.github","content":"@.version","image":"assets://piwind-more-bbcode/cloud/github.svg"},"gitee":{"name":"@.gitee","content":"@.version","image":"assets://piwind-more-bbcode/cloud/gitee.png"},"bd":{"name":"@.bd","content":"@.password","image":"assets://piwind-more-bbcode/cloud/baidu.svg"},"360":{"name":"@.360","content":"@.password","image":"assets://piwind-more-bbcode/cloud/360.svg"},"ty":{"name":"@.ty","content":"@.password","image":"assets://piwind-more-bbcode/cloud/tianyi.svg"},"ali":{"name":"@.ali","content":"@.password","image":"assets://piwind-more-bbcode/cloud/ali.png"},"ct":{"name":"@.ct","content":"@.password","image":"assets://piwind-more-bbcode/cloud/ct.svg"},"tx":{"name":"@.tx","content":"@.password","image":"assets://piwind-more-bbcode/cloud/tx.svg"},"lz":{"name":"@.lz","content":"@.password","image":"assets://piwind-more-bbcode/cloud/lz.svg"},"123":{"name":"@.123","content":"@.password","image":"assets://piwind-more-bbcode/cloud/123.png"},"kk":{"name":"@.quark","content":"@.password","image":"assets://piwind-more-bbcode/cloud/quark.png"},"google":{"name":"@.google","content":"@.password","image":"assets://piwind-more-bbcode/cloud/google.png"},"one":{"name":"@.one","content":"@.password","image":"assets://piwind-more-bbcode/cloud/onedrive.png"},"f":{"name":"@.f","content":"@.password","image":"assets://piwind-more-bbcode/cloud/f.png"},"mega":{"name":"@.mega","content":"@.password","image":"assets://piwind-more-bbcode/cloud/mega.png"},"dropbox":{"name":"@.dropbox","content":"@.password","image":"assets://piwind-more-bbcode/cloud/dropbox.png"},"mediafire":{"name":"@.mediafire","content":"@.password","image":"assets://piwind-more-bbcode/cloud/mediafire.jpg"}}';
 
     protected \Illuminate\Contracts\Filesystem\Cloud $assetsFilesystem;
     protected Translator $translator;
@@ -46,7 +46,7 @@ class Cloud
         $TipTxtSwitch = "";
         foreach ($this->config as $key => $cloud) {
             $logoSwitch .= '<xsl:if test="@type=\'' . $key . '\'"><img src="' . $this->getImageUrl($cloud['image']) . '"/></xsl:if>';
-            $TipTxtSwitch .= '<xsl:if test="@type=\'' . $key . '\'"><span class="cloud-type">' . $this->getTrans($cloud['name'], "xypp-more-bbcode.forum.cloud.type") . '</span><span class="cloud_password">' . $this->getTrans($cloud['content'], "xypp-more-bbcode.forum.cloud.content") . ' {TEXT3}</span></xsl:if>';
+            $TipTxtSwitch .= '<xsl:if test="@type=\'' . $key . '\'"><span class="cloud-type">' . $this->getTrans($cloud['name'], "piwind-more-bbcode.forum.cloud.type") . '</span><span class="cloud_password">' . $this->getTrans($cloud['content'], "piwind-more-bbcode.forum.cloud.content") . ' {TEXT3}</span></xsl:if>';
         }
 
         // Cloud Box

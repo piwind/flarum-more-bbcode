@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of xypp/more-bbcode.
+ * This file is part of flarum-more-bbcode.
  *
  * Copyright (c) 2024 小鱼飘飘
  *
@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xypp\MoreBBCode\Tags;
+namespace Piwind\MoreBBCode\Tags;
 
 use Flarum\Locale\Translator;
 use s9e\TextFormatter\Configurator;
-use Xypp\MoreBBCode\Helper\FunctionHelper;
+use Piwind\MoreBBCode\Helper\FunctionHelper;
 
 class RepositoryBBCode
 {
@@ -45,7 +45,7 @@ class RepositoryBBCode
             $config->BBCodes->addFromRepository('CODE');
         if ($this->functions->isEnable("quote"))
             $config->BBCodes->addFromRepository('QUOTE', 'default', [
-                'authorStr' => '<xsl:value-of select="@author"/> ' . $this->translator->trans('xypp-more-bbcode.forum.quote.wrote')
+                'authorStr' => '<xsl:value-of select="@author"/> ' . $this->translator->trans('piwind-more-bbcode.forum.quote.wrote')
             ]);
         if ($this->functions->isEnable("list-ul") || $this->functions->isEnable("list-ol"))
             $config->BBCodes->addFromRepository('*');

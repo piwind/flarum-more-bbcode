@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of imeepo/flarum-more-bbcode.
+ * This file is part of flarum-more-bbcode.
  *
  * Copyright (c) 2023 imeepo.
  * Copyright (c) 2024 小鱼飘飘
@@ -10,10 +10,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Xypp\MoreBBCode;
+namespace Piwind\MoreBBCode;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
-use Xypp\MoreBBCode\Tags\Cloud;
+use Piwind\MoreBBCode\Tags\Cloud;
 
 return [
     (new Extend\Frontend('forum'))
@@ -28,22 +28,22 @@ return [
         ->configure(Configure::class)
         ->render(Rendering::class),
     (new Extend\Settings)
-        ->default("xypp-more-bbcode.cloud", Cloud::$DEFAULT_VALUE)
-        ->default("xypp-more-bbcode.disable", '{"gdoc":true,"iframe":true}')
-        ->default("xypp-more-bbcode.collect-all", "none")
-        ->default("xypp-more-bbcode.remove-markdown", "none")
-        ->default("xypp-more-bbcode.collect-markdown", "first")
-        ->default("xypp-more-bbcode.pref-markdown", "all")
-        ->serializeToForum("xypp-more-bbcode-remove-markdown", "xypp-more-bbcode.remove-markdown")
-        ->serializeToForum("xypp-more-bbcode-collect-all", "xypp-more-bbcode.collect-all")
-        ->serializeToForum("xypp-more-bbcode-collect-markdown", "xypp-more-bbcode.collect-markdown")
-        ->serializeToForum("xypp-more-bbcode-pref-markdown", "xypp-more-bbcode.pref-markdown"),
+        ->default("piwind-more-bbcode.cloud", Cloud::$DEFAULT_VALUE)
+        ->default("piwind-more-bbcode.disable", '{"gdoc":true,"iframe":true}')
+        ->default("piwind-more-bbcode.collect-all", "none")
+        ->default("piwind-more-bbcode.remove-markdown", "none")
+        ->default("piwind-more-bbcode.collect-markdown", "first")
+        ->default("piwind-more-bbcode.pref-markdown", "all")
+        ->serializeToForum("piwind-more-bbcode-remove-markdown", "piwind-more-bbcode.remove-markdown")
+        ->serializeToForum("piwind-more-bbcode-collect-all", "piwind-more-bbcode.collect-all")
+        ->serializeToForum("piwind-more-bbcode-collect-markdown", "piwind-more-bbcode.collect-markdown")
+        ->serializeToForum("piwind-more-bbcode-pref-markdown", "piwind-more-bbcode.pref-markdown"),
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(ForumAttributes::class),
     (new Extend\User)
-        ->registerPreference("xypp-more-bbcode-auto-close")
-        ->registerPreference("xypp-more-bbcode-pref-markdown")
-        ->registerPreference("xypp-more-bbcode-collect-all")
-        ->registerPreference("xypp-more-bbcode-remove-markdown")
-        ->registerPreference("xypp-more-bbcode-collect-markdown")
+        ->registerPreference("piwind-more-bbcode-auto-close")
+        ->registerPreference("piwind-more-bbcode-pref-markdown")
+        ->registerPreference("piwind-more-bbcode-collect-all")
+        ->registerPreference("piwind-more-bbcode-remove-markdown")
+        ->registerPreference("piwind-more-bbcode-collect-markdown")
 ];

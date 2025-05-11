@@ -49,7 +49,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Xypp\\MoreBBCode\\": "src/"
+            "Piwind\\MoreBBCode\\": "src/"
         }
     },
     "extra": {

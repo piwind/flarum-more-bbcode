@@ -7,7 +7,7 @@
  * LICENSE file that was distributed with this source code.
  */
 
-namespace Xypp\MoreBBCode;
+namespace Piwind\MoreBBCode;
 
 use s9e\TextFormatter\Configurator;
 use Flarum\Locale\Translator;

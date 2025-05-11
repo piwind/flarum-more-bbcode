@@ -6,7 +6,7 @@ import { bbcode } from "../utils/styleUtil";
 import Button from "flarum/common/components/Button";
 import common from "../utils/commonReplaceUtil";
 function _trans(key: string, params?: any): string {
-    const dat = app.translator.trans("xypp-more-bbcode.forum.cloud." + key, params);
+    const dat = app.translator.trans("piwind-more-bbcode.forum.cloud." + key, params);
     if (Array.isArray(dat)) return dat.join("");
     return dat;
 }
@@ -30,7 +30,7 @@ export default class cloudPreviewModal extends Modal<{
     content() {
         return <div className="Modal-body">
             <div className="Form-group">
-                <label for="xypp-more-bbcode-cloud-type">
+                <label for="piwind-more-bbcode-cloud-type">
                     {_trans("type.label")}
                 </label>
                 <Select options={this.opts} value={this.type} onchange={((e: string) => {

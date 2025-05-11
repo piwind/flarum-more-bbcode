@@ -16,26 +16,26 @@ export function addXX2SeeTags(tags: TagCollector, priority: () => number) {
     //xx2see
     tags.group(priority(), "xx2see",
         "fas fa-eye",
-        "xypp-more-bbcode.forum.xx2see.title", (tags) => {
+        "piwind-more-bbcode.forum.xx2see.title", (tags) => {
             const priority = prioritySerial(100, 100);
             //Login 2 See
             tags.add(priority(), "login2see",
                 "fas fa-user",
-                "xypp-more-bbcode.forum.xx2see.login.title",
+                "piwind-more-bbcode.forum.xx2see.login.title",
                 bbcode("[login]")
             );
 
             //Reply 2 See
             tags.add(priority(), "reply2see",
                 "fas fa-reply",
-                "xypp-more-bbcode.forum.xx2see.reply.title",
+                "piwind-more-bbcode.forum.xx2see.reply.title",
                 bbcode("[reply]")
             );
 
             //Like 2 See
             tags.add(priority(), "like2see",
                 "fas fa-heart",
-                "xypp-more-bbcode.forum.xx2see.like.title",
+                "piwind-more-bbcode.forum.xx2see.like.title",
                 bbcode("[like]")
             );
         }

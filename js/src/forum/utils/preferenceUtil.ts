@@ -2,9 +2,9 @@ import app from "flarum/forum/app";
 import { StyleType } from "../helper/tagCollector";
 
 export function getValue<T>(key: string): T {
-    let value = (app.session?.user?.preferences() || {})["xypp-more-bbcode-" + key] as T | null | undefined;
+    let value = (app.session?.user?.preferences() || {})["piwind-more-bbcode-" + key] as T | null | undefined;
     if (!value) {
-        value = app.forum.attribute<T>("xypp-more-bbcode-" + key);
+        value = app.forum.attribute<T>("piwind-more-bbcode-" + key);
     }
     return value;
 }

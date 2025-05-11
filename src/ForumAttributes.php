@@ -1,8 +1,8 @@
 <?php
 
-namespace Xypp\MoreBBCode;
+namespace Piwind\MoreBBCode;
 use Flarum\Locale\Translator;
-use Xypp\MoreBBCode\Helper\FunctionHelper;
+use Piwind\MoreBBCode\Helper\FunctionHelper;
 
 class ForumAttributes
 {
@@ -25,7 +25,7 @@ class ForumAttributes
         $attributes['bbcode-disable'] = $this->functions->getDisableConfig();
         $clouds = [];
         foreach ($this->functions->getCloudConfig() as $key => $cloud) {
-            $clouds[$key] = $this->getTrans($cloud['name'], "xypp-more-bbcode.forum.cloud.type");
+            $clouds[$key] = $this->getTrans($cloud['name'], "piwind-more-bbcode.forum.cloud.type");
         }
         $attributes['bbcode-cloud'] = $clouds;
         return $attributes;

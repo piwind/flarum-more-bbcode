@@ -1,8 +1,8 @@
 <?php
 
-namespace Xypp\MoreBBCode\Helper;
+namespace Piwind\MoreBBCode\Helper;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Xypp\MoreBBCode\Tags\Cloud;
+use Piwind\MoreBBCode\Tags\Cloud;
 
 class FunctionHelper
 {
@@ -12,10 +12,10 @@ class FunctionHelper
     public function __construct(SettingsRepositoryInterface $settingsRepositoryInterface)
     {
         $this->settings = $settingsRepositoryInterface;
-        $this->disable = json_decode($this->settings->get("xypp-more-bbcode.disable") ?: "{}", true);
+        $this->disable = json_decode($this->settings->get("piwind-more-bbcode.disable") ?: "{}", true);
         if (!$this->disable)
             $this->disable = [];
-        $this->cloudConfig = json_decode($this->settings->get("xypp-more-bbcode.cloud") ?: Cloud::$DEFAULT_VALUE, true);
+        $this->cloudConfig = json_decode($this->settings->get("piwind-more-bbcode.cloud") ?: Cloud::$DEFAULT_VALUE, true);
     }
 
     public function isEnable(string $key)

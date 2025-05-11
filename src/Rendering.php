@@ -1,9 +1,9 @@
 <?php
 
-namespace Xypp\MoreBBCode;
+namespace Piwind\MoreBBCode;
 
 /*
- * This file is part of imeepo/flarum-more-bbcode.
+ * This file is part of flarum-more-bbcode.
  *
  * Copyright (c) 2024 小鱼飘飘
  *

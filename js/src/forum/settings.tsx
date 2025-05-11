@@ -8,7 +8,7 @@ import { showIf } from './utils/nodeUtil';
 import { getValue } from './utils/preferenceUtil';
 
 function _trans(key: string, params?: any): string {
-    const dat = app.translator.trans("xypp-more-bbcode.forum." + key, params);
+    const dat = app.translator.trans("piwind-more-bbcode.forum." + key, params);
     if (Array.isArray(dat)) return dat.join("");
     return dat;
 }
@@ -22,13 +22,13 @@ export default function regSetting() {
     }
     extend(SettingsPage.prototype, 'settingsItems', function (items) {
         items.add(
-            'xypp-more-bbcode', [
+            'piwind-more-bbcode', [
             <h2>{_trans("name")}</h2>,
             Object.keys(config).map((key) => {
                 const opts: Record<string, string> = {};
                 config[key].forEach(k => { opts[k] = _trans(`${key}.${k}`) });
                 const value = getValue(key) || config[key][0];
-                const fm = app.forum.attribute("xypp-more-bbcode-" + key);
+                const fm = app.forum.attribute("piwind-more-bbcode-" + key);
                 return <FieldSet label={_trans(key + ".title")} className={classList("Settings", "Settings-" + key)}>
                     <small className='setting-default-value'>{showIf(!!fm, _trans("preference-default", { "default": _trans(`${key}.${fm}`) }))}</small>
                     <Select
@@ -36,7 +36,7 @@ export default function regSetting() {
                         value={value}
                         onchange={(value: string) => {
                             const saveObj: Record<string, string> = {}
-                            saveObj["xypp-more-bbcode-" + key] = value;
+                            saveObj["piwind-more-bbcode-" + key] = value;
                             app.session.user!.savePreferences(saveObj);
                         }}
                     />

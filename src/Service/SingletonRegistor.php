@@ -1,8 +1,8 @@
 <?php
 
-namespace Xypp\MoreBBCode\Service;
+namespace Piwind\MoreBBCode\Service;
 use Flarum\Foundation\AbstractServiceProvider;
-use Xypp\MoreBBCode\Helper\FunctionHelper;
+use Piwind\MoreBBCode\Helper\FunctionHelper;
 
 class SingletonRegistor extends AbstractServiceProvider
 {
