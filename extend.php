@@ -29,7 +29,7 @@ return [
         ->render(Rendering::class),
     (new Extend\Settings)
         ->default("xypp-more-bbcode.cloud", Cloud::$DEFAULT_VALUE)
-        ->default("xypp-more-bbcode.disable", "{"gdoc":true,"iframe":true}")
+        ->default("xypp-more-bbcode.disable", '{"gdoc":true,"iframe":true}')
         ->default("xypp-more-bbcode.collect-all", "none")
         ->default("xypp-more-bbcode.remove-markdown", "none")
         ->default("xypp-more-bbcode.collect-markdown", "first")
