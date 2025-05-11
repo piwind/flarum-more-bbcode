@@ -1,6 +1,6 @@
 {
-    "name": "xypp/flarum-more-bbcode",
-    "description": "Adds more BBCode. Remaster from imeepo/flarum-more-bbcode and litalino/flarum-more-bbcode",
+    "name": "piwind/flarum-more-bbcode",
+    "description": "Adds more BBCode. Forked from xypp/flarum-more-bbcode with maintained updates.",
     "keywords": [
         "flarum",
         "flarum extension"
@@ -11,6 +11,11 @@
         "flarum/core": "^1.2.0"
     },
     "authors": [
+        {
+            "name": "piwind",
+            "email": "piwind95@outlook.com",
+            "role": "Developer"
+        },
         {
             "name": "小鱼飘飘",
             "email": "z@xypp.cc",
@@ -28,7 +33,7 @@
         }
     ],
     "support": {
-        "source": "https://github.com/zxy19/flarum-more-bbcode"
+        "source": "https://github.com/piwind/flarum-more-bbcode"
     },
     "flarum-extension": {
         "title": "BBCode More New",
