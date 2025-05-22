@@ -91,7 +91,7 @@ app.initializers.add('piwind/more-bbcode', () => {
         showMoreBBcodeButtons = !showMoreBBcodeButtons;
         m.redraw();
       },
-      icon: showIf(showMoreBBcodeButtons, "fa fa-minus", "fa fa-plus")
+      icon: showIf(showMoreBBcodeButtons, "fas fa-minus", "fas fa-plus")
     }, app.translator.trans("piwind-more-bbcode.forum.name")));
     if (showMoreBBcodeButtons && (this.attrs as any)?.composer?.editor?.el)
       items.add("piwind-more-bbcode-buttons", buttonBar.component({

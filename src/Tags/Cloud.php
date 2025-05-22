@@ -64,7 +64,7 @@ class Cloud
                 </div>
             </div>
             <a class="cloud_button" href="{URL}" target="_blank" rel="noopener noreferrer">
-                <i class="fa fa-download"></i>
+                <i class="fas fa-download"></i>
             </a>
         </div>'
         );
